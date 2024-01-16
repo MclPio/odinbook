@@ -8,6 +8,8 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  username: michael # role previously added
+  password: <%= ENV['DATABASE_PASSWORD'] %> # variable previously added
 
 development:
   <<: *default
