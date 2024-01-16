@@ -1,24 +1,10 @@
-# README
+# Odinbook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Project Link](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a Ruby on Rails project making a social media site clone applying knowledge learned. 
+Things I am looking forward to:
+* Testing the application
+* Trying out omni auth
+* Finding a unique spin that makes the project special
+* Getting the database design done
