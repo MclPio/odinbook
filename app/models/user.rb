@@ -20,4 +20,9 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+
+  # user has many followers as 
+  # follower belongs to user
+  # ?????
+  #todo need to research how to model this relationship, also database migration
 end
