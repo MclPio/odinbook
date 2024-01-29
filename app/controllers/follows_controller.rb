@@ -16,9 +16,13 @@ class FollowsController < ApplicationController
   end
 
   # toggle! method works great for the approved parameter
+  # todo:
+  # need validation for duplicate requests
+  # write some model tests
+  # implement views for accepting/denying requests.
   private
 
   def follow_params
-    params.require(:follow).permit(:follower_id, :followee_id) #Need follower and followee.... through form?
+    params.require(:follow).permit(:follower_id, :followee_id)
   end
 end
