@@ -21,8 +21,9 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
-  # user has many followers as 
-  # follower belongs to user
-  # ?????
-  #todo need to research how to model this relationship, also database migration
+  has_many :follower_follows, foreign_key: :followee_id, class_name: 'Follow'
+  has_many :followers, through: :follower_follows, source: :follower
+
+  has_many :followee_follows, foreign_key: :follower_id, class_name: 'Follow'
+  has_many :followees, through: :followee_follows, source: :followee
 end
