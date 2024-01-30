@@ -9,7 +9,7 @@ class FollowsController < ApplicationController
     @follow = Follow.new(follow_params)
 
     if @follow.save
-      # need to change this later
+      redirect_to users_path
     else
       redirect_to users_path, status: :unprocessable_entity
     end
