@@ -17,8 +17,8 @@ class FollowsController < ApplicationController
 
   # toggle! method works great for the approved parameter
   # todo:
-  # write some model tests
-  # implement views for accepting/denying requests.
+  # implement views for accepting/denying requests. Followee should be the one to approve deny
+  # Implement logic in view to not display follow if request already sent
   private
 
   def follow_params
