@@ -36,10 +36,7 @@ class FollowsController < ApplicationController
   end
   # toggle! method works great for the approved parameter
   # todo:
-  # implement views for accepting/denying requests. Followee should be the one to approve deny
-  # edit view to accept/deny requests. update action to implement. need custom params to accept approved.
-  # index view to show all requests? or all current followers? What about followings?
-  # Implement logic in view to not display follow if request already sent
+  # Change approved param to status, which can only have 3 values: accepted, pending, ignored
   private
 
   def follow_params
