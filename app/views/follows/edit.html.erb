@@ -1,0 +1,7 @@
+<h1>follow#edit</h1>
+
+<%= @follow.id %>
+<%= form_with model: @follow do |form| %>
+  <%= form.hidden_field :approved, value: true %>
+  <%= form.submit "Follow" %>
+<% end %>

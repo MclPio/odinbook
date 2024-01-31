@@ -1,10 +1,10 @@
-follow#index
+<h1>follow#index</h1>
 
-<% @requests.each do |request| %>
-  <%= User.find(request.follower_id).username %>
-    <%= form_with scope: :follow, url: follows_path do |form| %>
-      <%= form.hidden_field :follower_id, value: current_user.id %>
-      <%= form.hidden_field :followee_id, value: request.follower_id %>
-      <%= form.submit "Accept" %>
-    <% end %>
+<% @follows.each do |request| %>
+  <div>follower_id: <%= User.find(request.follower_id).id %></div>
+  <div>followee_id: <%= User.find(request.followee_id).id %></div>
+  <div>follower: <%= User.find(request.follower_id).username %></div>
+  <div>followee: <%= User.find(request.followee_id).username %></div>
+  <div><%= request.approved %></div>
+  <%= link_to "edit", edit_follow_path(request) %>
 <% end %>

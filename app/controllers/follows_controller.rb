@@ -1,7 +1,7 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @requests = current_user.follower_follows
+    @follows = current_user.follower_follows
   end
 
   def new
@@ -18,12 +18,18 @@ class FollowsController < ApplicationController
     end
   end
 
-  def edit
-
+  def edit # Only for authorized user
+    @follow = Follow.find(params[:id])
   end
 
   def update
-
+    @follow = Follow.find(params[:id]).toggle(:approved)
+    
+    if @follow.save
+      redirect_to follows_path
+    else
+      render follows_path, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -37,6 +43,6 @@ class FollowsController < ApplicationController
   private
 
   def follow_params
-    params.require(:follow).permit(:follower_id, :followee_id)
+    params.require(:follow).permit(:follower_id, :followee_id, :id, :approved)
   end
 end
