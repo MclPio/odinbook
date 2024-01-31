@@ -1,0 +1,10 @@
+follow#index
+
+<% @requests.each do |request| %>
+  <%= User.find(request.follower_id).username %>
+    <%= form_with scope: :follow, url: follows_path do |form| %>
+      <%= form.hidden_field :follower_id, value: current_user.id %>
+      <%= form.hidden_field :followee_id, value: request.follower_id %>
+      <%= form.submit "Accept" %>
+    <% end %>
+<% end %>

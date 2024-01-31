@@ -1,5 +1,8 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
+  def index
+    @requests = current_user.follower_follows
+  end
 
   def new
     @follow = Follow.new
@@ -15,9 +18,21 @@ class FollowsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def show
+  end
   # toggle! method works great for the approved parameter
   # todo:
   # implement views for accepting/denying requests. Followee should be the one to approve deny
+  # edit view to accept/deny requests. update action to implement. need custom params to accept approved.
+  # index view to show all requests? or all current followers? What about followings?
   # Implement logic in view to not display follow if request already sent
   private
 
