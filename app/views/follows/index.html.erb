@@ -1,15 +1,16 @@
-<h1>follow#index</h1>
+<h1>Followers</h1>
 
 <% @follows.each do |request| %>
-  <div>follower_id: <%= User.find(request.follower_id).id %></div>
-  <div>followee_id: <%= User.find(request.followee_id).id %></div>
-  <div>follower: <%= User.find(request.follower_id).username %></div>
-  <div>followee: <%= User.find(request.followee_id).username %></div>
+  <div><%= User.find(request.follower_id).username %></div>
   <div><%= request.approved %></div>
-  <%= link_to "edit", edit_follow_path(request) %>
-<% end %>
 
-<%# Follow categories: %>
-<%# Accepted %>
-<%# Ignored %>
-<%# Pending %>
+  <%= form_with model: request, url: follow_path(request), method: :patch do |form| %>
+    <%= form.hidden_field :approved, value: !request.approved %>
+    <%= form.submit(request.approved ? 'Ignore' : 'Approve') %>
+  <% end %>
+  
+  <%= link_to "Remove", follow_path(request), data: { 
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+<% end %>
