@@ -1,6 +1,6 @@
 user#show
 <%= render "users/shared/profile_avatar" %>
-<%= @user.username %>
+<div><%= @user.username %></div>
 <%= @user.bio %>
 <%= @user.created_at.strftime("%Y-%m-%d") %>
 <%= link_to 'Edit', edit_user_path %>

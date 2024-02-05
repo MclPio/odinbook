@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user!, only: [:edit, :create]
+  before_action :authorize_user!, only: [:edit, :update]
   before_action :authenticate_user!
 
   def index
@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #Need to handle Couldn't find User with 'id'=88
+
   end
 
   def edit
@@ -31,10 +33,14 @@ class UsersController < ApplicationController
   end
 
   def authorize_user!
-    current_user.id == params[:id]
+    @user = User.find(params[:id])
+
+    unless current_user == @user
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
+    end
   end
 end
 
-# write tests for the edit
 # handle gauth2 and devise username potential conflicts
 # write system and model tests

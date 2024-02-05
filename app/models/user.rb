@@ -11,7 +11,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.full_name = auth.info.name # assuming the user model has a name
       user.avatar_url = auth.info.image # assuming the user model has an image
-      user.username = auth.info.name + auth.uid.to_s
+      user.username = auth.info.name + auth.uid.to_s + srand.to_s
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
@@ -27,4 +27,5 @@ class User < ApplicationRecord
   has_many :followee_follows, foreign_key: :follower_id, class_name: 'Follow'
   has_many :followees, through: :followee_follows, source: :followee
 
+  has_many :posts
 end
