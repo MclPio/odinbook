@@ -14,8 +14,10 @@ normal:
   email: normal@world.co
   encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
   username: normal
+  id: 100
 
 normal2:
   email: normal2@world.co
   encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
   username: normal2
+  id: 101

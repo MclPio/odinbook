@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :authorize_user!, only: [:edit, :create]
+  before_action :authenticate_user!
 
   def index
     @users = User.all
@@ -34,3 +34,7 @@ class UsersController < ApplicationController
     current_user.id == params[:id]
   end
 end
+
+# write tests for the edit
+# handle gauth2 and devise username potential conflicts
+# write system and model tests

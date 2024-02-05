@@ -1,4 +1,5 @@
 User#edit
+<%= render "users/shared/errors" %>
 <%= form_with model: @user do |form| %>
   <%= form.label :username %>
   <%= form.text_field :username %>
@@ -9,5 +10,5 @@ User#edit
   <%= form.label :avatar_url %>
   <%= form.text_field :avatar_url %> <%# validation needed, nil unacceptable...%>
 
-  <%= form.submit %>
+  <%= form.submit "Save" %>
 <% end %>
