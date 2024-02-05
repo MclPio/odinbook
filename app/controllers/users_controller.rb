@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_pararms
-    params.require(:user).permit(:bio,:username)
+    params.require(:user).permit(:bio,:username, :avatar_url)
   end
 
   def authorize_user!
