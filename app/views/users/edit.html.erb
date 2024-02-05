@@ -6,5 +6,8 @@ User#edit
   <%= form.label :bio %>
   <%= form.text_area :bio %>
 
+  <%= form.label :profile_image_url %>
+  <%= form.text_field :profile_image_url %> <%# validation needed, nil unacceptable...%>
+
   <%= form.submit %>
 <% end %>
