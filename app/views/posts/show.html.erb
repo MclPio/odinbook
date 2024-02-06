@@ -3,6 +3,12 @@
 <%= render @post %>
 
 <div>
+  <%= form_with scope: :like, url: new_like_path do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :post_id, value: @post.id %>
+    <%= form.submit "Like" %>
+    <%# NEED TO CORRECTLY IMPLeMENT THIS%>
+  <% end %>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
 

@@ -28,4 +28,7 @@ class User < ApplicationRecord
   has_many :followees, through: :followee_follows, source: :followee, dependent: :destroy
 
   has_many :posts, dependent: :destroy
+  
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
 end
