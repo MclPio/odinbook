@@ -7,6 +7,9 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    user = users(:normal)
+    sign_in user
+
     visit posts_url
     assert_selector "h1", text: "Posts"
   end

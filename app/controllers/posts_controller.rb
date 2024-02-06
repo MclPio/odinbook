@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: %i[ show edit update destroy ]
-
+  before_action :authorize_user!, only: %i[ edit update destroy ]
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -66,5 +67,14 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:body, :user_id)
+    end
+
+    def authorize_user!
+      @post = Post.find(params[:id])
+  
+      unless current_user.id == @post.user_id
+        flash[:alert] = "You are not authorized to perform this action."
+        redirect_to root_path
+      end
     end
 end

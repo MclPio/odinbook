@@ -12,3 +12,7 @@
               full_name: "user#{i} lastname",
               username: "user#{i}")
 end
+
+User.all.each do |user| 
+  Post.create(body: "THIS #{user.id}S POST #{user.id}",user_id: user.id)
+end
