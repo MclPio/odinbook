@@ -22,10 +22,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :follower_follows, foreign_key: :followee_id, class_name: 'Follow'
-  has_many :followers, through: :follower_follows, source: :follower
+  has_many :followers, through: :follower_follows, source: :follower, dependent: :destroy
 
   has_many :followee_follows, foreign_key: :follower_id, class_name: 'Follow'
-  has_many :followees, through: :followee_follows, source: :followee
+  has_many :followees, through: :followee_follows, source: :followee, dependent: :destroy
 
   has_many :posts
 end
