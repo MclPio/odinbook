@@ -41,6 +41,3 @@ class UsersController < ApplicationController
     end
   end
 end
-
-# handle gauth2 and devise username potential conflicts
-# write system and model tests

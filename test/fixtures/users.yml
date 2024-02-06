@@ -21,3 +21,13 @@ normal2:
   encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
   username: normal2
   id: 101
+
+one:
+  email: one@world.co
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  username: one
+
+two:
+  email: two@world.co
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  username: two
