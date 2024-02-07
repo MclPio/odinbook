@@ -6,14 +6,21 @@ class LikesController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.find(params[:like][:post_id])
     @like = @post.likes.new(user: current_user)
 
     if @like.save
       redirect_to @post, notice: "Post was successfully liked."
     else
-      render :new, status: :unprocessable_entity
+      render @post, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @like = Like.find(params[:id])
+    @like.destroy
+
+    redirect_to @post, status: :see_other
   end
 
   private
@@ -22,6 +29,3 @@ class LikesController < ApplicationController
     params.require(:like).permit(:post_id, :user_id)
   end
 end
-
-#TODO
-#Implement the view action of liking a post
