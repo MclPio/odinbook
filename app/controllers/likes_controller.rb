@@ -1,26 +1,21 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @like = Like.new
-  end
-
   def create
-    @post = Post.find(params[:like][:post_id])
-    @like = @post.likes.new(user: current_user)
+    @like = current_user.likes.new(like_params)
 
     if @like.save
-      redirect_to @post, notice: "Post was successfully liked."
-    else
-      render @post, status: :unprocessable_entity
+      flash[:notice] = @like.errors.full_messages.to_sentence
     end
+
+    redirect_to @like.post
   end
 
   def destroy
-    @like = Like.find(params[:id])
+    @like = current_user.likes.find(params[:id])
+    post = @like.post
     @like.destroy
-
-    redirect_to @post, status: :see_other
+    redirect_to post
   end
 
   private
