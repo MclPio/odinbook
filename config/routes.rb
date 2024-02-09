@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create]
+  end
   root 'pages#home'
   devise_for :users, controllers: {
     registerations: 'user/registrations',

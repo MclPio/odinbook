@@ -21,20 +21,12 @@
     <%= link_to "Edit this post", edit_post_path(@post) %>
     <%= button_to "Destroy this post", @post, method: :delete %>
   <% end %>
+  <p>
+    <strong>Comments:</strong>
 
-  <form action="/comments" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
-    <textarea name="comment[body]"> </textarea>
-    <input type="submit" value="comment">
-  </form>
-
-  <% @post.comments.each do |comment| %>
-    <div>
-      <%= comment.body %>
-      <%= link_to "Edit", "comments/edit" %>
-    </div>
-  <% end %>
+    <%= render @post.comments.order(id: :desc) %>
+    <%= render partial: "comments/form", locals: { post: @post } %>
+  </p>
 
   <%# Need to add a create comment form here with edit and delete button for comment creator %>
   <%# Need to add a @post.comments index list of all post's comments below each post, have to have 
