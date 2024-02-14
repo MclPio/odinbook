@@ -4,3 +4,5 @@ user#show
 <%= @user.bio %>
 <%= @user.created_at.strftime("%Y-%m-%d") %>
 <%= link_to 'Edit', edit_user_path %>
+<h3>Posts:</h3>
+<%= render @user.posts.order(created_at: :asc) %>
