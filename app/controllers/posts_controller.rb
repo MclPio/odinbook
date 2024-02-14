@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: %i[ edit update destroy ]
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    approved_follows = current_user.followee_follows.where(approved:true)
+    approved_posts = approved_follows.flat_map(&:followee_id).flat_map { |id| Post.find_by(user_id:id) }
+    @posts = (current_user.posts + approved_posts).sort_by(&:created_at).reverse
+    # Need to show posts from approved follows only
   end
 
   # GET /posts/1 or /posts/1.json
