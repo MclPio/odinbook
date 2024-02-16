@@ -80,3 +80,5 @@ gem "omniauth-rails_csrf_protection"
 gem 'figaro'
 
 gem 'pg'
+
+gem "letter_opener", group: :development
