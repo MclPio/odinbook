@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,4 +34,8 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
 
   has_many :comments
+
+  def welcome_email
+    UserMailer.welcome_email(self).deliver_later
+  end
 end
