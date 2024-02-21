@@ -1,6 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Posts</h1>
+<form action="/posts" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
+  <textarea name="post[body]" rows="3" cols="25"></textarea>
+  <input type="submit" value="Post">
+</form>
 
 <div id="posts">
   <% @posts.each do |post| %>
@@ -10,5 +13,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
