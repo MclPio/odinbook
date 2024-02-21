@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     approved_follows = current_user.followee_follows.where(approved:true)
-    approved_posts = approved_follows.flat_map(&:followee_id).flat_map { |id| Post.find_by(user_id:id) }
+    approved_posts = approved_follows.flat_map(&:followee_id).flat_map { |id| Post.find_by(user_id:id) }.compact
     @posts = (current_user.posts + approved_posts).sort_by(&:created_at).reverse
     # Need to show posts from approved follows only
   end

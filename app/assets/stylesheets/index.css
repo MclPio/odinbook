@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  gap: 50px;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+}
