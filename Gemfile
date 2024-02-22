@@ -77,8 +77,10 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
-gem 'figaro'
+gem "figaro"
 
-gem 'pg'
+gem "pg"
 
 gem "letter_opener", group: :development
+
+gem "faker"
