@@ -1,12 +1,12 @@
 <div id="<%= dom_id post %>">
+  <div class="post-user-info">
+    <% Rails.error.handle do %>
+      <%= image_tag("#{post.user.avatar_url}", alt: "profile picture", size: "40x40") %>
+    <% end %>
+    <%= post.user.username %>
+    <small><%= post.created_at.strftime("%b %d, %Y") %></small>
+  </div>
   <p>
-    <strong>Body:</strong>
     <%= post.body %>
   </p>
-
-  <p>
-    <strong>by:</strong>
-    <%= post.user.username %>
-  </p>
-
 </div>

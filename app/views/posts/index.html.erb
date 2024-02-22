@@ -1,7 +1,7 @@
 <form action="/posts" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
-  <textarea name="post[body]" rows="3" cols="25"></textarea>
+  <textarea name="post[body]" rows="3" cols="25" placeholder="What is on your mind?"></textarea>
   <input type="submit" value="Post">
 </form>
 
@@ -9,7 +9,7 @@
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
-      <%= link_to "Show this post", post %>
+      <%# link_to "Show this post", post %>
     </p>
   <% end %>
 </div>
