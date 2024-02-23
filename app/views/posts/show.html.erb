@@ -19,12 +19,12 @@
   <% if current_user.posts.include?(@post) %>
     <%= link_to "Edit this post", edit_post_path(@post) %>
     <%= button_to "Destroy this post", @post, method: :delete %>
-  <% end %>gui
+  <% end %>
   <p>
     <strong>Comments:</strong>
-
-    <%= render @post.comments.order(id: :desc) %>
     <%= render partial: "comments/form", locals: { post: @post } %>
+    <%= render @post.comments.order(id: :desc) %>
+    
   </p>
 
   <%# Need to add a create comment form here with edit and delete button for comment creator %>
