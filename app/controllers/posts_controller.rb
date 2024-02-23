@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user)
                  .where(user_id: followee_ids << current_user.id)
                  .order(created_at: :desc)
-    # Need to show posts from approved follows only
+    # TODO: Infinite scroll using hotwire, and pagination
   end
 
   # GET /posts/1 or /posts/1.json
