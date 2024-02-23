@@ -4,9 +4,11 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: %i[ edit update destroy ]
   # GET /posts or /posts.json
   def index
-    approved_follows = current_user.followee_follows.where(approved:true)
-    approved_posts = approved_follows.flat_map(&:followee_id).flat_map { |id| Post.find_by(user_id:id) }.compact
-    @posts = (current_user.posts + approved_posts).sort_by(&:created_at).reverse
+    approved_follows = current_user.followee_follows.where(approved: true)
+    followee_ids = approved_follows.pluck(:followee_id)
+    @posts = Post.includes(:user, :comments, :likes)
+                 .where(user_id: followee_ids << current_user.id)
+                 .order(created_at: :desc)
     # Need to show posts from approved follows only
   end
 
@@ -63,22 +65,26 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:body, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find_by(id: params[:id])
 
-    def authorize_user!
-      @post = Post.find(params[:id])
-  
-      unless current_user.id == @post.user_id
-        flash[:alert] = "You are not authorized to perform this action."
-        redirect_to root_path
-      end
+    unless @post
+      flash[:alert] = 'Post not found.'
+      redirect_to root_path
     end
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:body, :user_id)
+  end
+
+  def authorize_user!
+    unless current_user.id == @post.user_id
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
+    end
+  end
 end

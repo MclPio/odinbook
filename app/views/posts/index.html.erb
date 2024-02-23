@@ -10,8 +10,8 @@
     <div class="card">
       <%= render post %>
       <div class="comments-likes">
-        <div><%= link_to "Comments:", post_path(post) %> <%= post.comments.count %></div>
-        <div>Likes: <%= post.likes.count %></div>
+        <div><%= link_to "Comments:", post_path(post) %> <%= post.comments.size %></div>
+        <div>Likes: <%= post.likes.size %></div>
       </div>
     </div>
     <%# <p> %>
