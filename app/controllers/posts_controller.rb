@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     approved_follows = current_user.followee_follows.where(approved: true)
     followee_ids = approved_follows.pluck(:followee_id)
-    @posts = Post.includes(:user, :comments, :likes)
+    @posts = Post.includes(:user)
                  .where(user_id: followee_ids << current_user.id)
                  .order(created_at: :desc)
     # Need to show posts from approved follows only
