@@ -1,9 +1,12 @@
-user#show
 <%= render "users/shared/profile_avatar" %>
-<div><%= @user.username %></div>
-<%= @user.bio %>
-<%= @user.created_at.strftime("%Y-%m-%d") %>
-<%= link_to 'Edit', edit_user_path %>
+<div class="profile-container">
+  <div class="profile-info">
+    <div class="username"><%= @user.username %></div>
+    <div class="bio"><%= @user.bio %></div>
+    <div class="join-date"><%= @user.created_at.strftime("%Y-%m-%d") %></div>
+  </div>
+  <div class="edit-profile"><%= link_to 'Edit', edit_user_path %></div>
+</div>
 
 <div id="posts">
   <% @user.posts.each do |post| %>
