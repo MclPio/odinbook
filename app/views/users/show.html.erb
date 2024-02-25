@@ -4,5 +4,15 @@ user#show
 <%= @user.bio %>
 <%= @user.created_at.strftime("%Y-%m-%d") %>
 <%= link_to 'Edit', edit_user_path %>
-<h3>Posts:</h3>
-<%= render @user.posts.order(created_at: :desc) %>
+
+<div id="posts">
+  <% @user.posts.each do |post| %>
+    <div class="card">
+      <%= render post %>
+      <div class="comments-likes-view">
+        <%= render partial: 'posts/count_comments_likes', locals: {post: post} %>
+        <div><%= link_to "View", post_path(post) %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

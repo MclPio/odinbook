@@ -9,13 +9,10 @@
   <% @posts.each do |post| %>
     <div class="card">
       <%= render post %>
-      <div class="comments-likes">
-        <div><%= link_to "Comments:", post_path(post) %> <%= post.comments_count %></div>
-        <div>Likes: <%= post.likes_count %></div>
+      <div class="comments-likes-view">
+        <%= render partial: 'count_comments_likes', locals: {post: post} %>
+        <div><%= link_to "View", post_path(post) %></div>
       </div>
     </div>
-    <%# <p> %>
-      <%# link_to "Show this post", post %>
-    <%# </p> %>
   <% end %>
 </div>
