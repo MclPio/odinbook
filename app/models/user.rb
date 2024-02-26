@@ -38,4 +38,12 @@ class User < ApplicationRecord
   def welcome_email
     UserMailer.welcome_email(self).deliver_later
   end
+
+  def follow(user)
+    followees << user
+  end
+
+  def unfollow(user)
+    followees.destroy(user)
+  end
 end

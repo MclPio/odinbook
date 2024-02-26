@@ -10,6 +10,7 @@
         <% else %>
           <p>following</p>
           <%# implement unfollow button %>
+          <%# render partial: 'users/shared/unfollow', locals: {} %>
         <% end %>
       <% else %>
         <%= form_with scope: :follow, url: follows_path do |form| %>

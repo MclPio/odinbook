@@ -1,5 +1,6 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @follows = current_user.follower_follows
   end
@@ -33,7 +34,7 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = Follow.find(params[:id])
+    @follow = Follow.find(follow_params)
     @follow.destroy
 
     redirect_to follows_path, status: :see_other 

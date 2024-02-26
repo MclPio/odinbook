@@ -5,7 +5,12 @@
     <div class="bio"><%= @user.bio %></div>
     <div class="join-date"><%= @user.created_at.strftime("%Y-%m-%d") %></div>
   </div>
-  <div class="edit-profile"><%= link_to 'Edit', edit_user_path %></div>
+  <% if current_user == @user %>
+    <div class="edit-profile"><%= link_to 'Edit', edit_user_path %></div>
+  <% else %>
+    <%# is this user following me? am I folllowing them? %>
+    
+  <% end %>
 </div>
 
 <div id="posts">
