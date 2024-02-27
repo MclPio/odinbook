@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    if params[:search]
+      @users = User.where("username LIKE ?", User.sanitize_sql_like(params[:search]) + "%")
+    end
   end
 
   def show
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
   private
 
   def user_pararms
-    params.require(:user).permit(:bio,:username, :avatar_url)
+    params.require(:user).permit(:bio,:username, :avatar_url, :search)
   end
 
   def authorize_user!

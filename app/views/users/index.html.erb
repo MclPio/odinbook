@@ -1,3 +1,9 @@
+<form action="/users" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type='text' name='search'>
+  <input type="submit" value="search">
+</form>
+
 <% @users.each do |user| %>
     <% if current_user == user %>
       <% next %>
