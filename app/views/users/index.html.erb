@@ -1,21 +1,10 @@
-<div>
 <% @users.each do |user| %>
     <% if current_user == user %>
       <% next %>
     <% else %>
-      <%= link_to user.username, user_path(user) %>
-      <% if current_user.following?(user)%>
-          <% follow = Follow.find_by(follower_id: current_user.id, followee_id: user.id) %>
-          <%= form_with scope: :follow, url: follow_path(follow), method: :delete  do |form| %>
-            <%= form.submit "Unfollow" %>
-          <% end %>
-      <% else %>
-        <%= form_with scope: :follow, url: follows_path do |form| %>
-          <%= form.hidden_field :follower_id, value: current_user.id %>
-          <%= form.hidden_field :followee_id, value: user.id %>
-          <%= form.submit "Follow" %>
-        <% end %>
-      <% end %>
+      <div class="card">
+        <%= render partial: 'users/shared/profile_avatar', locals: {user: user}%>
+        <%= link_to user.username, user_path(user) %>
+      </div>
     <% end %>
 <% end %>
-</div>

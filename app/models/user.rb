@@ -50,4 +50,8 @@ class User < ApplicationRecord
   def following?(user)
     followees.include?(user)
   end
+
+  def approve(user)
+    follower_follows.find_by(follower_id: user.id).toggle!(:approved)
+  end
 end
