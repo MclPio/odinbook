@@ -8,3 +8,9 @@ Things I am looking forward to:
 * Trying out omni auth
 * Finding a unique spin that makes the project special
 * Getting the database design done
+
+## TODO
+* Follower search bar and improved appearance
+* Notifications for each new follow, comment, posts from followees
+* Likes for comments
+* Comments for comments
