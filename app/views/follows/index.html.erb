@@ -3,7 +3,8 @@
 <% @follows.each do |request| %>
   <div class='card'>
     <%= render partial: 'users/shared/profile_avatar', locals: {user: User.find(request.follower_id)}%>
-    <div><%= User.find(request.follower_id).username %></div>
+    <% user =  User.find(request.follower_id)%>
+    <div><%= link_to user.username, user_path(user) %></div>
     <div><%= request.approved %></div>
     <%= form_with model: request, url: follow_path(request), method: :patch do |form| %>
       <%= form.hidden_field :approved, value: !request.approved %>

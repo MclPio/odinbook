@@ -23,7 +23,7 @@
   <p>
     <strong>Comments:</strong>
     <%= render partial: "comments/form", locals: { post: @post } %>
-    <%= render @post.comments.order(id: :desc) %>
+    <%= render @post.comments.includes([:user]).order(id: :desc) %>
     
   </p>
 
