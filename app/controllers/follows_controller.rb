@@ -34,10 +34,10 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = Follow.find(follow_params)
+    @follow = Follow.find(params[:id])
     @follow.destroy
 
-    redirect_to follows_path, status: :see_other 
+    redirect_back fallback_location: root_path, status: :see_other
   end
 
   def show
