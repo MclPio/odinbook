@@ -10,7 +10,6 @@ Things I am looking forward to:
 * Getting the database design done
 
 ## TODO
-* Follower search bar and improved appearance
 * Notifications for each new follow, comment, posts from followees
 * Likes for comments
 * Comments for comments

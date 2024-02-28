@@ -1,14 +1,17 @@
-<h1>Followers</h1>
+<form action="/follows" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type='text' name='search'>
+  <input type="submit" value="search">
+</form>
 
 <% @follows.each do |request| %>
-  <div class='card'>
-    <%= render partial: 'users/shared/profile_avatar', locals: {user: User.find(request.follower_id)}%>
-    <% user =  User.find(request.follower_id)%>
+  <div class='card user-info'>
+    <div><%= render partial: 'users/shared/profile_avatar', locals: {user: User.find(request.follower_id)}%></div>
+    <div><% user =  User.find(request.follower_id)%></div>
     <div><%= link_to user.username, user_path(user) %></div>
-    <div><%= request.approved %></div>
     <%= form_with model: request, url: follow_path(request), method: :patch do |form| %>
       <%= form.hidden_field :approved, value: !request.approved %>
-      <%= form.submit(request.approved ? 'Ignore' : 'Approve') %>
+      <%= form.submit('Approve') if !request.approved %>
     <% end %>
     
     <%= link_to "Remove", follow_path(request), data: {

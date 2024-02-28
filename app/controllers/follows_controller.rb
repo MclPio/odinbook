@@ -3,6 +3,12 @@ class FollowsController < ApplicationController
 
   def index
     @follows = current_user.follower_follows
+
+    if params[:search]
+      @follows = current_user.followers
+                             .where("username LIKE ?", User.sanitize_sql_like(params[:search]) + "%")
+                             .map {|id| Follow.find_by(follower_id: id)}
+    end
   end
 
   def new
