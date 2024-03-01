@@ -14,10 +14,11 @@ class PostsTest < ApplicationSystemTestCase
     visit post_path(@post)
     assert_selector "p", text: "This is a post's text content"
 
-    fill_in "input", with: "A REPLY :3"
-    click_on "Reply"
+    fill_in "comment[body]", with: "A REPLY :3"
 
-    expect(page).to have_content("A REPLY :3" )
+    click_on "submit"
+    take_screenshot
+    assert_text "A REPLY :3"
   end
 
   test "should update Comment" do

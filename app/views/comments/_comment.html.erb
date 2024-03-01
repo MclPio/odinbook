@@ -1,6 +1,7 @@
 <div id="<%= dom_id comment %>">
 <article>
   <p><%= comment.body %></p>
+  <div><%= link_to "Edit this comment", edit_comment_path(comment) %></div> |
   <small>by <%= comment.user.username %></small>
 </article>
 <hr/>
