@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 
   resources :follows
 
-  resources :likes, only: [:create, :destroy]
+  resources :poly_likes, only: [:create, :destroy]
 end
