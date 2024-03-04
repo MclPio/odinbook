@@ -1,7 +1,13 @@
 <div id="<%= dom_id comment %>">
 <article>
-  <p><%= comment.body %></p>
-  <div><%= link_to "Edit this comment", edit_comment_path(comment) %></div> |
+  <div class="comment-username">
+    <p><%= comment.body %></p>
+    <div>
+      <% if current_user == comment.user %>
+        <%= link_to "Edit", edit_post_comment_path(post ,comment) %>
+      <% end %>
+    </div>
+  </div>
   <small>by <%= comment.user.username %></small>
 </article>
 <hr/>
