@@ -2,7 +2,6 @@ class PolyLikesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    print "#{poly_like_params}"
     @poly_like = current_user.poly_likes.new(poly_like_params)
 
     if @poly_like.save

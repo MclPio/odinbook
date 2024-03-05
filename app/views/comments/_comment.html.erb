@@ -14,5 +14,6 @@
   </div>
   <small>by <%= comment.user.username %></small>
 </article>
+<%= render partial: "comments/likes", locals: { comment: comment } %>
 <hr/>
 </div>
