@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_user!, only: %i[ edit update destroy ]
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[ edit update destroy ]
 
   def edit
     @comment = Comment.find(params[:id])
@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to post_url(@comment.post), notice: "Comment was successfully updated."
     else
+      flash[:notice] = @comment.errors.full_messages.to_sentence
       render :edit, status: :unprocessable_entity
     end
   end
@@ -30,11 +31,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to post_url(@comment.post), notice: "Comment was successfully deleted."
   end
 
   private

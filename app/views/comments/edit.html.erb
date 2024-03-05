@@ -2,7 +2,7 @@
 
 <%= form_with url: post_comment_path(params[:post_id], @comment), method: "patch" do |form| %>
   <%= form.fields_for :comment do |f| %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, value: @comment.body, rows: 6, cols: 48 %>
   <% end %>
   <%= form.submit %>
 <% end %>
