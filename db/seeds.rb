@@ -55,3 +55,14 @@ User.all.each do |user|
   quote = Faker::JapaneseMedia::OnePiece.quote
   Post.create(body: quote, user_id: user.id)
 end
+
+Post.all.each do |post|
+  3.times do
+    user = User.all.sample
+    city = Faker::Games::ElderScrolls.city
+    creature = Faker::Games::ElderScrolls.creature
+    adjective = Faker::Adjective.positive
+
+    user.comments.create!(body: "Hi I am from #{city}, I send my #{adjective} #{creature}, enjoy!", post_id: post.id)
+  end
+end
