@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_211615) do
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+    t.check_constraint "depth >= 0 AND depth <= 1", name: "depth_limit"
   end
 
   create_table "follows", force: :cascade do |t|
