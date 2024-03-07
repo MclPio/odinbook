@@ -24,11 +24,6 @@
   <p>
     <strong>Comments:</strong>
     <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
-    <%= render partial: @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc), locals: { post: @post }  %>
-    
+    <%= render partial: @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc), locals: { post: @post }  %>    
   </p>
-
-  <%# Need to add a create comment form here with edit and delete button for comment creator %>
-  <%# Need to add a @post.comments index list of all post's comments below each post, have to have 
-    a limiter on page or else could have 1000s of comments loading %>
 </div>

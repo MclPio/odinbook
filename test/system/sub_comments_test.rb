@@ -17,7 +17,7 @@ class SubCommentsTest < ApplicationSystemTestCase
     comment_id = comments(:one).id
     within("#comment_#{comment_id}") do
       click_on "Reply"
-      fill_in "Body", with: "This is a child comment"
+      fill_in "comment[body]", with: "This is a child comment"
       click_on "Submit"
     end
     assert_text "This is a child comment"
@@ -33,14 +33,13 @@ class SubCommentsTest < ApplicationSystemTestCase
     comment_id = comments(:one).id
     within("#comment_#{comment_id}") do
       click_on "Reply"
-      fill_in "Body", with: "This is a child comment"
+      fill_in "comment[body]", with: "This is a child comment"
       click_on "Submit"
-      # find sub comment
-      # click on edit
-      # fill in Child comment edited!
-      # click on submit
-      # assert that the subcomment is updated
+      click_on "Edit"
     end
+    fill_in "_comment_body", with: "This is an edited child comment"
+    click_on "Save"
+    assert_text "This is an edited child comment"
   end
 
   test "should delete sub-comment" do
@@ -53,11 +52,12 @@ class SubCommentsTest < ApplicationSystemTestCase
     comment_id = comments(:one).id
     within("#comment_#{comment_id}") do
       click_on "Reply"
-      fill_in "Body", with: "This is a child comment"
+      fill_in "comment[body]", with: "This is a child comment"
       click_on "Submit"
-      # click on delete
-      # say yes to popup
-      # assert comment is deleted or notice confirming deletion
+      click_on "Delete"
+      accept_confirm("Are you sure?")
     end
+    assert_no_text "This is a child comment"
+    assert_text "Comment was successfully deleted."
   end
 end
