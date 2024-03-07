@@ -78,7 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_211615) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "poly_likes", "users"

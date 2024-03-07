@@ -57,5 +57,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  width: 75vw;
+  width: 70vw;
+}
+
+.sub-comment {
+  padding-left: 20px;
 }

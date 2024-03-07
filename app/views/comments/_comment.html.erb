@@ -5,8 +5,8 @@
     <p><%= comment.body %></p>
     <div>
       <% if current_user == comment.user %>
-        <%= link_to "Edit", edit_post_comment_path(post ,comment) %>
-        <%= link_to "Delete", post_comment_path(post, comment),
+        <%= link_to "Edit", edit_post_comment_path(comment.post ,comment) %>
+        <%= link_to "Delete", post_comment_path(comment.post, comment),
             data: { turbo_method: :delete,
                     turbo_confirm: "Are you sure?"} %>
       <% end %>
@@ -16,4 +16,12 @@
 </article>
 <%= render partial: "comments/likes", locals: { comment: comment } %>
 <hr/>
+<% if comment.depth == 0 %>
+  <div class="comment-form">
+    <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
+  </div>
+<% end %>
+<div class="sub-comment">
+  <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
+</div>
 </div>

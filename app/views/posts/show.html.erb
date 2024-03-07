@@ -23,8 +23,8 @@
   <% end %>
   <p>
     <strong>Comments:</strong>
-    <%= render partial: "comments/form", locals: { post: @post } %>
-    <%= render partial: @post.comments.includes([:user]).order(id: :desc), locals: { post: @post }  %>
+    <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
+    <%= render partial: @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc), locals: { post: @post }  %>
     
   </p>
 
