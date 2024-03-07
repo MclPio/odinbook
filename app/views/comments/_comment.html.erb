@@ -14,16 +14,13 @@
   </div>
   <small>by <%= comment.user.username %></small>
 </article>
+<div data-controller="comment-form">
 <%= render partial: "comments/likes", locals: { comment: comment } %>
 <hr/>
-<% if comment.depth == 0 %>
-  <div data-controller="comment-form">
-    <%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %>
-    <div class="comment-form hide" data-comment-form-target="form" >
-      <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
-    </div>
+  <div class="comment-form hide" data-comment-form-target="form" >
+    <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
   </div>
-<% end %>
+</div>
 <div class="sub-comment">
   <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
 </div>

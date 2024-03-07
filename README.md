@@ -11,5 +11,8 @@ Things I am looking forward to:
 
 ## TODO
 * Notifications for each new follow, comment, posts from followees
-* Likes for comments
-* Comments for comments
+* Turbo streams for new comment reply as it currently refreshes the page and loses scrolling position
+* Add pagination for posts, comments
+* Add a cancel button for reply, through stimulus controller
+* Add icons
+* Fix eager loading issues
