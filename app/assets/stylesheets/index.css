@@ -63,3 +63,7 @@
 .sub-comment {
   padding-left: 20px;
 }
+
+.hide {
+  display: none
+}
