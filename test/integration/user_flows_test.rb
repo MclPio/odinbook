@@ -5,7 +5,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   test "can see the log in page" do
-    get "/"
+    get "/users/sign_in"
     assert_select "h1", "Odinbook"
   end
 

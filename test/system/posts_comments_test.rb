@@ -16,7 +16,7 @@ class PostsTest < ApplicationSystemTestCase
 
     fill_in "comment[body]", with: "A REPLY :3"
 
-    click_on "submit"
+    click_on "Submit"
     assert_text "A REPLY :3"
   end
 

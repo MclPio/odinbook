@@ -30,12 +30,13 @@ class SignUpTest < ApplicationSystemTestCase
       info: {
         email: 'bob@world.co',
         first_name: 'bob',
-        last_name: 'last'
+        last_name: 'last',
+        image: 'image_link'
       }
     })
 
     visit root_path
-    find('input[src="/assets/web_light_rd_SU@1x.png"]').click
+    find('input[value="Login"]').click
     assert_selector 'button', text: "Sign out"
   end
 

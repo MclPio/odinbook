@@ -1,8 +1,12 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @post = posts(:one)
+    user = users(:normal)
+    sign_in user
   end
 
   test "should get index" do
@@ -40,7 +44,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy post" do
     assert_difference("Post.count", -1) do
-      delete post_url(@post)
+      Post.all.each { |p| puts(p.id)}
+      delete post_path(@post)
+      Post.all.each { |p| puts(p.id)}
     end
 
     assert_redirected_to posts_url

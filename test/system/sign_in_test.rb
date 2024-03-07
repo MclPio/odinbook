@@ -25,7 +25,8 @@ class SignInTest < ApplicationSystemTestCase
       info: {
         email: 'bob@world.co',
         first_name: 'bob',
-        last_name: 'last'
+        last_name: 'last',
+        image: 'image_link'
       }
     })
 
@@ -39,8 +40,8 @@ class SignInTest < ApplicationSystemTestCase
     OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
 
     visit new_user_session_path
-    find('input[src="/assets/web_light_rd_SI@1x.png"]').click
-    assert_text 'Could not authenticate you from GoogleOauth2 because "Invalid credentials".'
+    find('input[value="Login"]').click
     take_screenshot
+    assert_text 'Could not authenticate you from GoogleOauth2 because "Invalid credentials".'
   end
 end

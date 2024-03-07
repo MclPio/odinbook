@@ -11,7 +11,7 @@ class PostsTest < ApplicationSystemTestCase
     sign_in user
 
     visit posts_url
-    assert_selector "h1", text: "Posts"
+    assert_selector :button, "Post"
   end
 
   test "should create post" do
@@ -19,17 +19,15 @@ class PostsTest < ApplicationSystemTestCase
     sign_in user
 
     visit posts_url
-    click_on "New post"
 
-    fill_in "Body", with: @post.body
-    click_on "Create Post"
+    fill_in "post[body]", with: @post.body
+    click_on "Post"
 
     assert_text "Post was successfully created"
-    click_on "Back"
   end
 
   test "should update Post" do
-    user = users(:normal)
+    user = users(:one)
     sign_in user
 
     visit post_url(@post)
@@ -43,7 +41,7 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Post" do
-    user = users(:normal)
+    user = users(:one)
     sign_in user
 
     visit post_url(@post)

@@ -79,11 +79,6 @@ class UsersTest < ApplicationSystemTestCase
     sign_in user
     visit user_path(101)
     take_screenshot
-    click_on "Edit"
-    fill_in "Username", with: "changed_user"
-    take_screenshot
-    click_on "Save"
-    assert_selector "div", text: "normal2"
-    take_screenshot
+    assert_no_text "Edit"
   end
 end
