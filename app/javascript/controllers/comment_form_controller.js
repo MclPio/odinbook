@@ -5,6 +5,6 @@ export default class extends Controller {
 
   toggleForm(event) {
     event.preventDefault();
-    this.formTarget.classList.remove("hide")
+    this.formTarget.classList.toggle("hide")
   }
 }
