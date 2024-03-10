@@ -51,9 +51,11 @@ Follow.all.each do |f|
 end
 
 # NPC Users create posts
-User.all.each do |user|
-  quote = Faker::JapaneseMedia::OnePiece.quote
-  Post.create(body: quote, user_id: user.id)
+4.times do
+  User.all.each do |user|
+    quote = Faker::JapaneseMedia::OnePiece.quote
+    Post.create(body: quote, user_id: user.id)
+  end
 end
 
 Post.all.each do |post|

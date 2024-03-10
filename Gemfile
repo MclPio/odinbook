@@ -86,3 +86,5 @@ gem "letter_opener", group: :development
 gem "faker"
 
 gem "bullet"
+
+gem "pagy"
