@@ -1,14 +1,26 @@
-<form action="<%= post_comments_path(post) %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <% if !parent.nil? %>
-    <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
-    <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
-  <% end %>
-  <textarea name="comment[body]" rows=6, cols=48></textarea>
-  <div class="comment-form-buttons">
-    <input type="submit" value="Submit">
-    <% if parent %>
-      <%= button_to "Cancel", "#", data: { action: "click->comment-form#toggleForm" } %>
+<% if parent %>
+  <form action="<%= post_comments_path(post) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <% if !parent.nil? %>
+      <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
+      <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
     <% end %>
-  </div>
-</form>
+    <textarea name="comment[body]" rows=6, cols=48></textarea>
+    <div class="comment-form-buttons">
+      <input type="submit" value="Submit">
+      <%= button_to "Close", "#", data: { action: "click->comment-form#toggleForm" } %>
+    </div>
+  </form>
+<% else %>
+  <form action="<%= post_comments_path(post) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <% if !parent.nil? %>
+      <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
+      <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
+    <% end %>
+    <textarea name="comment[body]" rows=6, cols=48></textarea>
+    <div class="comment-form-buttons">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+<% end %>

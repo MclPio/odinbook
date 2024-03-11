@@ -60,4 +60,21 @@ class SubCommentsTest < ApplicationSystemTestCase
     assert_no_text "This is a child comment"
     assert_text "Comment was successfully deleted."
   end
+
+  test "submitting a reply via Turbo Frames" do
+    user = users(:two)
+    sign_in user
+
+    visit post_path(@post)
+    assert_selector "p", text: "This is a post's text content"
+
+    comment_id = comments(:one).id
+    within("#comment_#{comment_id}") do
+      click_on "Reply"
+      fill_in "comment[body]", with: "This is a child comment"
+      click_on "Submit"
+    end
+    assert_selector 'turbo-frame[id="comment_id"]', visible: false
+    assert_text "This is a child comment"
+  end
 end

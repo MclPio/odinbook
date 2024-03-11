@@ -11,6 +11,7 @@ Things I am looking forward to:
 
 ## TODO
 * Notifications for each new follow, comment, posts from followees
-* Turbo streams for new comment reply as it currently refreshes the page and loses scrolling position
+* Turbo streams needs to clear form textarea.
 * Add pagination for posts, comments
 * Add icons
+* Populated comments and replys slow down page significantly

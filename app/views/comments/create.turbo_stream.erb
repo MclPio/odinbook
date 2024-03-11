@@ -1,0 +1,9 @@
+<% if @comment.parent %>
+  <%= turbo_stream.prepend "comment_#{params[:comment][:parent_id]}_replies",
+                          partial: 'comments/comment',
+                          locals: { comment: @comment } 
+                          %>
+<% else %>
+  <%= turbo_stream.prepend "comments",
+                          @comment %>
+<% end %>

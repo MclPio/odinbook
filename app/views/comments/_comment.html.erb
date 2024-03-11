@@ -21,7 +21,8 @@
     <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
   </div>
 </div>
-<div class="sub-comment">
+<div id = "<%= dom_id comment %>_replies" class="sub-comment" >
   <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
 </div>
+<div id="special_one"></div>
 </div>

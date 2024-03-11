@@ -11,11 +11,14 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
 
-    if !@comment.save
-      flash[:notice] = @comment.errors.full_messages.to_sentence
+    respond_to do |format|
+      if @comment.save
+        format.turbo_stream
+      else
+        flash[:notice] = @comment.errors.full_messages.to_sentence
+        format.html {render @comment.post, status: :unprocessable_entity}
+      end
     end
-
-    redirect_to @comment.post
   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
