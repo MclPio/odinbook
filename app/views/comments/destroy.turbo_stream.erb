@@ -1,1 +1,2 @@
 <%= turbo_stream.remove "comment_#{@comment.id}" %>
+<%= turbo_stream.update "flash", partial: "layouts/flash" %>

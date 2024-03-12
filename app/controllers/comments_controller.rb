@@ -17,7 +17,8 @@ class CommentsController < ApplicationController
         format.turbo_stream { flash.now[:notice] = "Comment was successfully created." }
       end
     else
-      render @comment.post, status: :unprocessable_entity
+      redirect_to @comment.post, notice: @comment.errors.full_messages.to_sentence,
+                                 status: :unprocessable_entity
     end
   end
 
@@ -37,7 +38,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @comment.post, notice: "Comment was successfully deleted."}
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Comment was successfully deleted." }
     end
   end
 
