@@ -11,13 +11,13 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.turbo_stream
-      else
-        flash[:notice] = @comment.errors.full_messages.to_sentence
-        format.html {render @comment.post, status: :unprocessable_entity}
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to @comment.post, notice: "Comment was successfully created."}
+        format.turbo_stream { flash.now[:notice] = "Comment was successfully created." }
       end
+    else
+      render @comment.post, status: :unprocessable_entity
     end
   end
 
@@ -34,7 +34,9 @@ class CommentsController < ApplicationController
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
+
     respond_to do |format|
+      format.html { redirect_to @comment.post, notice: "Comment was successfully deleted."}
       format.turbo_stream
     end
   end

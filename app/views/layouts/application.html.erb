@@ -14,8 +14,11 @@
     <div class="container">
       <%= render 'layouts/navbar'%>
       <div class="middle">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+
+        <div class="flash" id="flash">
+          <%= render "layouts/flash" %>
+        </div>
+
         <%= yield %>
       </div>
     </div>

@@ -7,3 +7,4 @@
   <%= turbo_stream.prepend "comments",
                           @comment %>
 <% end %>
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>
