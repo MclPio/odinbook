@@ -15,3 +15,5 @@ Things I am looking forward to:
 * Add pagination for posts, comments
 * Add icons
 * Populated comments and replys slow down page significantly
+* Likes should not refresh page
+* There is too much time spent on loading views, posts index page and long comment threads.
