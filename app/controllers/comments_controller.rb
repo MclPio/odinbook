@@ -34,7 +34,9 @@ class CommentsController < ApplicationController
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-    redirect_to post_url(@comment.post), notice: "Comment was successfully deleted."
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private
