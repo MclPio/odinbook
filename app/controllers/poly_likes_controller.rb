@@ -18,7 +18,11 @@ class PolyLikesController < ApplicationController
   def destroy
     @poly_like = current_user.poly_likes.find(params[:id])
     @poly_like.destroy
-    redirect_back(fallback_location: root_path)
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.turbo_stream
+    end
   end
 
   private
