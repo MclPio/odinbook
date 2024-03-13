@@ -15,7 +15,12 @@
   <small>by <%= comment.user.username %></small>
 </article>
 <div data-controller="comment-form">
-<%= render partial: "comments/likes", locals: { comment: comment } %>
+<div class="like-reply-bar">
+  <%= render partial: "comments/likes", locals: { comment: comment } %>
+  <% if comment.depth == 0 %>
+    <div><%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %></div>
+  <% end %>
+</div>
 <hr/>
   <div class="comment-form hide" data-comment-form-target="form" >
     <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>

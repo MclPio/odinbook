@@ -1,4 +1,4 @@
-<% if @poly_like.likable_type == "Post" %>
+<% if @poly_like.likable_type == 'Post' %>
     <%= turbo_stream.replace(
         "#{@poly_like.likable_type}_#{@poly_like.likable_id}_like",
         partial: 'poly_likes/form',

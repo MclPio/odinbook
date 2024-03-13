@@ -1,23 +1,18 @@
-<div class="like-reply-bar">
-  <div id="Comment_<%= comment.id %>_like">
-    <% like = current_user.poly_likes.find_by(likable: comment) %>
-    <% if like.nil? %>
-      <form action= <%= poly_likes_path %> method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="poly_like[likable_id]" value=<%= comment.id %>>
-        <input type="hidden" name="poly_like[likable_type]" value=<%= Comment %>>
-        <input type="submit" value="Like">
-      </form>
-    <% else %>
-      <form action= <%= poly_like_path(like)%> method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Unlike">
-      </form>
-    <% end %>
-  </div>
-  <div><%= pluralize(comment.poly_likes_count, 'like') if comment.poly_likes_count > 0 %></div>
-  <% if comment.depth == 0 %>
-    <div><%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %></div>
+<div id="Comment_<%= comment.id %>_like">
+  <% like = current_user.poly_likes.find_by(likable: comment) %>
+  <% if like.nil? %>
+    <form action= <%= poly_likes_path %> method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="poly_like[likable_id]" value=<%= comment.id %>>
+      <input type="hidden" name="poly_like[likable_type]" value=<%= Comment %>>
+      <input type="submit" value="Like">
+    </form>
+  <% else %>
+    <form action= <%= poly_like_path(like)%> method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Unlike">
+    </form>
   <% end %>
 </div>
+<div><%= pluralize(comment.poly_likes_count, 'like') if comment.poly_likes_count > 0 %></div>
