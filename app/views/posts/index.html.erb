@@ -5,14 +5,11 @@
   <input type="submit" value="Post">
 </form>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <div class="card">
-      <%= render post %>
-      <div class="comments-likes-view">
-        <%= render partial: 'count_comments_likes', locals: {post: post} %>
-        <div><%= link_to "View", post_path(post) %></div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= turbo_frame_tag :posts do %>
+  <%= render @posts %>
+<% end %>
+
+<%= turbo_frame_tag :pagination,
+    loading: :lazy,
+    src: posts_path(format: :turbo_stream, page: @pagy.next)
+    %>

@@ -9,7 +9,13 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user)
                  .where(user_id: followee_ids << current_user.id)
                  .order(created_at: :desc)
-    # TODO: Infinite scroll using hotwire, and pagination
+
+    @pagy, @posts = pagy_countless(@posts, items: 10)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /posts/1 or /posts/1.json

@@ -1,5 +1,5 @@
 <%= link_to "Back to posts", posts_path %>
-<%= render @post %>
+<%= render partial: 'post', locals: { show_view: true, post: @post } %>
 <div>
   <%= render partial: "poly_likes/form", locals: { post: @post } %>
   <% if current_user.posts.include?(@post) %>

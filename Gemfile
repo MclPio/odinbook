@@ -88,3 +88,5 @@ gem "faker"
 gem "bullet"
 
 gem 'cssbundling-rails'
+
+gem 'pagy'
