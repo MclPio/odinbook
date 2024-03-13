@@ -1,0 +1,5 @@
+<% pagy, paginated_comments = pagy_countless(comments, items: 2) %>
+<%= turbo_frame_tag "comment-pagination-#{dom_id(comments)}" do %>
+  <%= render partial: "comments/comments", locals: { comments: paginated_comments } %>
+  <%= paginate pagy, anchor: "comment-pagination-#{dom_id(comments)}" %>
+<% end %>
