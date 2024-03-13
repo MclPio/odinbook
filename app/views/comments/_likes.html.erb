@@ -1,5 +1,5 @@
 <div class="like-reply-bar">
-  <div>
+  <div id="Comment_<%= comment.id %>_like">
     <% like = current_user.poly_likes.find_by(likable: comment) %>
     <% if like.nil? %>
       <form action= <%= poly_likes_path %> method="post">

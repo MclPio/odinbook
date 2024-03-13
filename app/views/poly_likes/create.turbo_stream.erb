@@ -1,0 +1,13 @@
+<% if @poly_like.likable_type == "Post" %>
+    <%= turbo_stream.replace(
+        "#{@poly_like.likable_type}_#{@poly_like.likable_id}_like",
+        partial: 'poly_likes/form',
+        locals: { post: Post.find(@poly_like.likable_id) }
+    ) %>
+<% else %>
+    <%= turbo_stream.replace(
+        "#{@poly_like.likable_type}_#{@poly_like.likable_id}_like",
+        partial: 'comments/likes',
+        locals: { comment: Comment.find(@poly_like.likable_id) }
+    ) %>
+<% end %>

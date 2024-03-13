@@ -16,7 +16,7 @@ class FollowsController < ApplicationController
   end
 
   def create
-    @follow = Follow.new(follow_params)
+    @follow = Follow.new(follow_params).toggle(:approved)
 
     if @follow.save
       redirect_back fallback_location: root_path

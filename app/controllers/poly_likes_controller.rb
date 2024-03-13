@@ -5,10 +5,14 @@ class PolyLikesController < ApplicationController
     @poly_like = current_user.poly_likes.new(poly_like_params)
 
     if @poly_like.save
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path) }
+        format.turbo_stream
+      end
+    else
+      redirect_back(fallback_location: root_path)
       flash[:notice] = @poly_like.errors.full_messages.to_sentence
     end
-
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy

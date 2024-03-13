@@ -1,0 +1,18 @@
+<div id="Post_<%= post.id %>_like">
+  <% like = current_user.poly_likes.find_by(likable: post) %>
+  <% if like.nil? %>
+    <form action= <%= poly_likes_path %> method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="poly_like[likable_id]" value=<%= post.id %>>
+      <input type="hidden" name="poly_like[likable_type]" value=<%= Post %>>
+      <input type="submit" value="Like">
+    </form>
+  <% else %>
+    <form action= <%= poly_like_path(like)%> method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Unlike">
+    </form>
+  <% end %>
+  <div><%= pluralize(post.poly_likes_count, 'like') if post.poly_likes_count > 0 %></div>
+</div>
