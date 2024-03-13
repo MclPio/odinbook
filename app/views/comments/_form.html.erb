@@ -1,5 +1,5 @@
 <% if parent %>
-  <form action="<%= post_comments_path(post) %>" method="post">
+  <form action="<%= post_comments_path(post) %>" method="post" id="form_<%= parent.id %>">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <% if !parent.nil? %>
       <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
@@ -12,7 +12,7 @@
     </div>
   </form>
 <% else %>
-  <form action="<%= post_comments_path(post) %>" method="post">
+  <form action="<%= post_comments_path(post) %>" method="post" id="form_<%= post.id %>">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <% if !parent.nil? %>
       <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>

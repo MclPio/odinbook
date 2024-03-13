@@ -3,8 +3,14 @@
                           partial: 'comments/comment',
                           locals: { comment: @comment } 
                           %>
+  <%= turbo_stream.replace "form_#{@comment.parent.id}",
+                          partial: "comments/form",
+                          locals: { post: @comment.post, parent: @comment.parent } %>
+
 <% else %>
-  <%= turbo_stream.prepend "comments",
-                          @comment %>
+  <%= turbo_stream.prepend "comments", @comment %>
+  <%= turbo_stream.replace "form_#{@comment.post.id}",
+                          partial: "comments/form",
+                          locals: { post: @comment.post, parent: nil } %>
 <% end %>
 <%= turbo_stream.update "flash", partial: "layouts/flash" %>

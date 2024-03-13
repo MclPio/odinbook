@@ -11,9 +11,11 @@ Things I am looking forward to:
 
 ## TODO
 * Notifications for each new follow, comment, posts from followees
-* Turbo streams needs to clear form textarea.
 * Add pagination for posts, comments
 * Add icons
 * Populated comments and replys slow down page significantly
 * Likes should not refresh page
 * There is too much time spent on loading views, posts index page and long comment threads.
+
+## Featured Bugs
+* Weird turbo bug where a form is generated in a different way when replying for the second time
