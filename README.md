@@ -11,7 +11,7 @@ Things I am looking forward to:
 
 ## TODO
 * Notifications for each new follow, comment, posts from followees
-* Add pagination for, comments, followers
+* Add pagination for, comments
 * Add icons
 * Populated comments and replies slow down page significantly
 * Turbo posts new needed

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     begin
       @pagy, @users = pagy_countless(@users)
     rescue Pagy::OverflowError
-      flash[:alert] = "Invalid page number. Redirecting."
+      flash[:alert] = "Invalid page number."
       redirect_to users_path
     end
     if params[:search]

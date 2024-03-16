@@ -4,6 +4,12 @@ class FollowsController < ApplicationController
   def index
     @follows = current_user.follower_follows
 
+    begin
+      @pagy, @follows = pagy_countless(@follows)
+    rescue Pagy::OverflowError
+      flash[:alert] = "Invalid page number."
+      redirect_to follows_path
+    end
     if params[:search]
       @follows = current_user.followers
                              .where("username LIKE ?", User.sanitize_sql_like(params[:search]) + "%")

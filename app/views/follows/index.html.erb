@@ -21,3 +21,4 @@
     %>
   </div>
 <% end %>
+<%== pagy_bulma_nav(@pagy) if @pagy.pages > 1 && (params[:search].nil?)%>
