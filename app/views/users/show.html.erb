@@ -7,6 +7,7 @@
   </div>
   <% if current_user == @user %>
     <div class="edit-profile"><%= link_to 'Edit', edit_user_path %></div>
+    <div><%= link_to 'Followers', follows_path %></div>
   <% else %>
     <%# am I folllowing them? %>
     <% if @user.following?(current_user) %>
