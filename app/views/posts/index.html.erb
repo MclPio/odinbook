@@ -1,15 +1,21 @@
-<form action="/posts" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
-  <textarea name="post[body]" rows="3" cols="25" placeholder="What is on your mind?"></textarea>
-  <input type="submit" value="Post" data-turbo="false">
-</form>
-
-<%= turbo_frame_tag :posts do %>
-  <%= render @posts %>
-<% end %>
-
-<%= turbo_frame_tag :pagination,
-    loading: :lazy,
-    src: posts_path(format: :turbo_stream, page: @pagy.next)
-    %>
+<div class="section">
+  <div class="container">
+    <form action="/posts" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
+      <textarea name="post[body]" rows="3" cols="25" placeholder="What is on your mind?"></textarea>
+      <input type="submit" value="Post" data-turbo="false">
+    </form>
+  </div>
+  
+  <div class="">
+    <%= turbo_frame_tag :posts do %>
+      <%= render @posts %>
+    <% end %>
+  
+    <%= turbo_frame_tag :pagination,
+        loading: :lazy,
+        src: posts_path(format: :turbo_stream, page: @pagy.next)
+        %>
+  </div>
+</div>
