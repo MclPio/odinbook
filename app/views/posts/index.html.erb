@@ -3,19 +3,29 @@
     <form action="/posts" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
-      <textarea name="post[body]" rows="3" cols="25" placeholder="What is on your mind?"></textarea>
-      <input type="submit" value="Post" data-turbo="false">
+      <div class="field">
+        <div class="control">
+          <textarea class="textarea has-fixed-size" name="post[body]" rows="3" cols="25" placeholder="What is on your mind?"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <input type="submit" value="Post" data-turbo="false" class="button is-primary is-rounded">
+        </div>
+      </div>
     </form>
   </div>
   
-  <div class="">
-    <%= turbo_frame_tag :posts do %>
-      <%= render @posts %>
-    <% end %>
-  
-    <%= turbo_frame_tag :pagination,
-        loading: :lazy,
-        src: posts_path(format: :turbo_stream, page: @pagy.next)
-        %>
+  <div class="container">
+    <div class="">
+      <%= turbo_frame_tag :posts do %>
+        <%= render @posts %>
+      <% end %>
+    
+      <%= turbo_frame_tag :pagination,
+          loading: :lazy,
+          src: posts_path(format: :turbo_stream, page: @pagy.next)
+          %>
+    </div>
   </div>
 </div>

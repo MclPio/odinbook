@@ -1,8 +1,3 @@
-.navbar {
-  display: flex;
-  flex-direction: column;
-}
-
 .card {
   border-top: solid 1px black;
   border-left: solid 1px black;
