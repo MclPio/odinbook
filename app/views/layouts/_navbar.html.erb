@@ -1,39 +1,46 @@
 <div class="navbar">
   <div class="navbar-brand">
-    <span class="material-symbols-outlined">crossword</span>
-    <span>Odinbook</span>
+    <span class='icon-text'>
+      <span class="material-symbols-outlined icon">crossword</span>
+      <span>Odinbook</span>
+    </span>
   </div>
   <% if !current_user.nil? %>
-      <%= link_to posts_path, class: 'navbar-item' do %>
-        <span class="material-symbols-outlined">home</span>
+    <%= link_to posts_path, class: 'navbar-item' do %>
+      <span class="icon-text">
+        <span class="material-symbols-outlined icon">home</span>
         <span>Home</span>
-      <% end %>
-
-      <%= link_to users_path, class: 'navbar-item' do %>
-        <span class="material-symbols-outlined">explore</span>
+      </span>
+    <% end %>
+    <%= link_to users_path, class: 'navbar-item' do %>
+      <span class="icon-text">
+        <span class="material-symbols-outlined icon">explore</span>
         <span>People</span>
-      <% end %>
-
-      <%= link_to '#', class: 'navbar-item' do %>
-        <span class="material-symbols-outlined">notifications</span>
+      </span>
+    <% end %>
+    <%= link_to '#', class: 'navbar-item' do %>
+      <span class="icon-text">
+        <span class="material-symbols-outlined icon">notifications</span>
         <span>Notificatons</span>
-      <% end %>
-
-      <%= link_to user_path(current_user.id), class: 'navbar-item' do %>
-        <span class="material-symbols-outlined">person</span>
+      </span>
+    <% end %>
+    <%= link_to user_path(current_user.id), class: 'navbar-item' do %>
+      <span class="icon-text">
+        <span class="material-symbols-outlined icon">person</span>
         <span>Profile</span>
-      <% end %>
-
-      <%= link_to edit_user_registration_path, class: 'navbar-item' do %>
-        <span class="material-symbols-outlined">settings</span>
+      </span>
+    <% end %>
+    <%= link_to edit_user_registration_path, class: 'navbar-item' do %>
+      <span class="icon-text">
+        <span class="material-symbols-outlined icon">settings</span>
         <span>Settings</span>
+      </span>
+    <% end %>
+    <div class="navbar-item">
+      <%= button_to destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }}, class: 'button is-small is-danger is-outlined is-rounded' do %>
+        <span class="material-symbols-outlined icon">logout</span>
+        <span>Sign out</span>
       <% end %>
-
-      <div class="navbar-item">
-        <%= button_to destroy_user_session_path, data: { turbo: "false" }, method: :delete, class: 'button is-small is-danger is-outlined is-rounded' do %>
-          <span class="material-symbols-outlined icon">logout</span>
-          <span>Sign out</span>
-        <% end %>
-      </div>
+    </div>
   <% end %>
 </div>
