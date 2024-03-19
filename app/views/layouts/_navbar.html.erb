@@ -1,34 +1,30 @@
-<div class="section">
-    <div class="level-item">
-      <span class="material-symbols-outlined">crossword</span>Odinbook
-    
+<div class="navbar">
+  <div class="navbar-brand">
+    <span class="material-symbols-outlined">crossword</span>Odinbook
+  </div>
+  <% if !current_user.nil? %>
+      <%= link_to posts_path, class: 'navbar-item' do %>
+        <span class="material-symbols-outlined">home</span>Home
+      <% end %>
+
+      <%= link_to users_path, class: 'navbar-item' do %>
+        <span class="material-symbols-outlined">explore</span>People
+      <% end %>
+
+      <%= link_to '#', class: 'navbar-item' do %>
+        <span class="material-symbols-outlined">notifications</span>Notificatons
+      <% end %>
+
+      <%= link_to user_path(current_user.id), class: 'navbar-item' do %>
+        <span class="material-symbols-outlined">person</span>Profile
+      <% end %>
+
+      <%= link_to edit_user_registration_path, class: 'navbar-item' do %>
+        <span class="material-symbols-outlined">settings</span>Settings
+      <% end %>
+    <div class="navbar-item">
+      <span class="material-symbols-outlined">logout</span>
+      <%= button_to "Sign out", destroy_user_session_path, data: { turbo: "false" }, method: :delete %>
     </div>
-    <% if !current_user.nil? %>
-      <div class="level-item">
-        <span class="material-symbols-outlined">home</span>
-        <%= link_to 'Home', posts_path %>
-      </div>
-      <div class="level-item">
-        <span class="material-symbols-outlined">explore</span>
-            <%= link_to 'People', users_path %>
-      </div>
-      <div class="level-item">
-        <span class="material-symbols-outlined">
-        notifications
-        </span>
-        <%= link_to 'Notifications' %>
-      </div>
-      <div class="level-item">
-        <span class="material-symbols-outlined">person</span>
-        <%= link_to 'Profile', user_path(current_user.id) %>
-      </div>
-      <div class="level-item">
-        <span class="material-symbols-outlined">settings</span>
-        <%= link_to 'Settings', edit_user_registration_path %>
-      </div>
-      <div class="level-item">
-        <span class="material-symbols-outlined">logout</span>
-        <%= button_to "Sign out", destroy_user_session_path, data: { turbo: "false" }, method: :delete %>
-      </div>
-    <% end %>
+  <% end %>
 </div>
