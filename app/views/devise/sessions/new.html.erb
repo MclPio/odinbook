@@ -1,37 +1,40 @@
-<div class="columns is-centered">
-  <div class="column">
-    <h2 class="title is-5 has-text">Sign in</h2>
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box" }) do |f| %>
-      <div class="field">
-        <%= f.label :email, class: "label" %>
-        <div class="control">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :password, class: "label" %>
-        <div class="control">
-          <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
-        </div>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
+<div class="column is-narrow">
+  <div class="columns">
+    <div class="column">
+      <h2 class="title is-5 has-text">Sign in</h2>
+  
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box" }) do |f| %>
         <div class="field">
-          <label class="checkbox">
-            <%= f.check_box :remember_me %>
-            Remember me
-          </label>
+          <%= f.label :email, class: "label" %>
+          <div class="control">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+          </div>
+        </div>
+  
+        <div class="field">
+          <%= f.label :password, class: "label" %>
+          <div class="control">
+            <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+          </div>
+        </div>
+  
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <label class="checkbox">
+              <%= f.check_box :remember_me %>
+              Remember me
+            </label>
+          </div>
+        <% end %>
+  
+        <div class="field">
+          <div class="control">
+            <%= f.submit "Log in", class: "button is-primary is-fullwidth", data: { turbo: false } %>
+          </div>
         </div>
       <% end %>
-
-      <div class="field">
-        <div class="control">
-          <%= f.submit "Log in", class: "button is-primary is-fullwidth", data: { turbo: false } %>
-        </div>
-      </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
+  
+    </div>
   </div>
+  <%= render "devise/shared/links" %>
 </div>
