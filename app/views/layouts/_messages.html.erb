@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="notification is-primary notification-<%= key %>">
+    <ul>
+      <li>
+        <%= value %>
+      </li>
+    </ul>
+  </div>
+<% end %>

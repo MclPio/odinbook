@@ -10,13 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>        
-    <div class="flash" id="flash">
-      <%= render "layouts/flash" %>
-    </div>
-    <div class="section tile">
+  <body>
+      <%= render 'layouts/messages' %>
       <%= render 'layouts/navbar'%>
-        <%= yield %>
-    </div>
+      <%= yield %>
   </body>
 </html>
