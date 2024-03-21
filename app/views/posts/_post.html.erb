@@ -3,7 +3,7 @@
     <div id="<%= dom_id post %>">
       <div class="">
         <%= render partial: 'users/shared/profile_avatar', locals: {user: post.user}%>
-        <%= link_to post.user.username, user_path(post.user) %>
+        <%= link_to post.user.username, user_path(post.user), data: {turbo: false} %>
         <small><%= post.created_at.strftime("%b %d, %Y") %></small>
       </div>
       <p>
