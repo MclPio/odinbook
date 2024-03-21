@@ -1,21 +1,25 @@
-<div class="card">
-  <div id="<%= dom_id post %>">
-    <div class="post-user-info">
-      <%= render partial: 'users/shared/profile_avatar', locals: {user: post.user}%>
-      <%= link_to post.user.username, user_path(post.user) %>
-      <small><%= post.created_at.strftime("%b %d, %Y") %></small>
+<div class="media">
+  <div class="media-content">
+    <div id="<%= dom_id post %>">
+      <div class="">
+        <%= render partial: 'users/shared/profile_avatar', locals: {user: post.user}%>
+        <%= link_to post.user.username, user_path(post.user) %>
+        <small><%= post.created_at.strftime("%b %d, %Y") %></small>
+      </div>
+      <p>
+        <%= post.body %>
+      </p>
     </div>
-    <p>
-      <%= post.body %>
-    </p>
-  </div>
-
-  <div class="comments-likes-view">
-    <%= render partial: 'posts/count_comments_likes', locals: {post: post} %>
-    <div>
-      <% unless defined?(show_view) %>
-        <%= link_to "View", post_path(post), target: '_top' %>
-      <% end %>
-    </div>
+  
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <%= render partial: 'posts/count_comments_likes', locals: {post: post} %>
+        <div class="level-item">
+          <% unless defined?(show_view) %>
+            <%= link_to "View", post_path(post), target: '_top' %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>

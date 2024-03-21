@@ -12,7 +12,11 @@
 
   <body>
       <%= render 'layouts/messages' %>
-      <%= render 'layouts/navbar'%>
-      <%= yield %>
+      <div class="section">
+        <div class="columns">
+          <div class="column is-narrow"><%= render 'layouts/navbar'%></div>
+          <div class="column is-5"><%= yield %></div>
+        </div>
+      </div>
   </body>
 </html>

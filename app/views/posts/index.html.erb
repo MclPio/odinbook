@@ -1,5 +1,5 @@
-<div class="section">
-  <div class="container">
+<div class="container">
+  <div class="column is-half">
     <form action="/posts" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
@@ -15,17 +15,13 @@
       </div>
     </form>
   </div>
-  
-  <div class="container">
-    <div class="">
-      <%= turbo_frame_tag :posts do %>
-        <%= render @posts %>
-      <% end %>
-    
-      <%= turbo_frame_tag :pagination,
-          loading: :lazy,
-          src: posts_path(format: :turbo_stream, page: @pagy.next)
-          %>
-    </div>
+  <div class="column">
+    <%= turbo_frame_tag :posts do %>
+      <%= render @posts %>
+    <% end %>
+    <%= turbo_frame_tag :pagination,
+        loading: :lazy,
+        src: posts_path(format: :turbo_stream, page: @pagy.next)
+        %>
   </div>
 </div>
