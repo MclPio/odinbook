@@ -14,5 +14,5 @@
       <input type="submit" value="Unlike">
     </form>
   <% end %>
+  <div><%= pluralize(post.poly_likes_count, 'like') if post.poly_likes_count > 0 %></div>
 </div> 
-<div><%= pluralize(post.poly_likes_count, 'like') if post.poly_likes_count > 0 %></div>
