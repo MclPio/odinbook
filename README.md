@@ -13,6 +13,5 @@ Things I am looking forward to:
 * Notifications for each new follow, comment, posts from followees
 * Add pagination for, comments, then pagination for follower and users search result
 * Populated comments and replies slow down page significantly
-* Fix posts#show like button as it is not updating count.
 ## Featured Bugs
 * Weird turbo bug where a form is generated in a different way when replying for the second time

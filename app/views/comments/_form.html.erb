@@ -5,10 +5,20 @@
       <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
       <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
     <% end %>
-    <textarea name="comment[body]" rows=6, cols=48></textarea>
+    <div class="field">
+      <div class="control">
+        <textarea class="textarea" name="comment[body]" rows=6, cols=48></textarea class="textarea">
+        </div>
+    </div>
     <div class="comment-form-buttons">
-      <input type="submit" value="Submit">
-      <%= button_to "Close", "#", data: { action: "click->comment-form#toggleForm" } %>
+      <div class="field is-grouped">
+        <div class="control">
+          <input type="submit" value="Submit" class="button is-link">
+        </div>
+        <div class="control">
+          <%= button_to "Close", "#", data: { action: "click->comment-form#toggleForm" }, class: "button is-link is-light"%>
+        </div>
+      </div>
     </div>
   </form>
 <% else %>
@@ -18,9 +28,15 @@
       <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
       <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
     <% end %>
-    <textarea name="comment[body]" rows=6, cols=48></textarea>
-    <div class="comment-form-buttons">
-      <input type="submit" value="Submit">
+    <div class="field">
+      <div class="control">
+        <textarea class="textarea" name="comment[body]" rows=6, cols=48></textarea class="textarea">
+        </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input type="submit" value="Submit" class="button is-link">
+      </div>
     </div>
   </form>
 <% end %>
