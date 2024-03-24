@@ -1,9 +1,10 @@
-<h1>New post</h1>
-
-<%= render "form", post: @post %>
-
-<br>
-
-<div>
-  <%= link_to "Back to posts", posts_path %>
+<div class="section">
+  <div class="container">
+    <h1 class="title">New post</h1>
+    
+    <%= render "form", post: @post %>
+    <div class="buttons">
+      <%= link_to "Back to posts", posts_path, class: "button is-light" %>
+    </div>
+  </div>
 </div>

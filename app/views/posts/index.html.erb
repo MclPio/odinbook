@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="column is-half">
+  <div class="column">
     <form action="/posts" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>

@@ -13,5 +13,6 @@ Things I am looking forward to:
 * Notifications for each new follow, comment, posts from followees
 * Add pagination for, comments, then pagination for follower and users search result
 * Populated comments and replies slow down page significantly
+* Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
 ## Featured Bugs
 * Weird turbo bug where a form is generated in a different way when replying for the second time

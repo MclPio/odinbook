@@ -1,11 +1,13 @@
-<%= link_to "Back to posts", posts_path %>
+<div class="buttons">
+  <%= link_to "Back to posts", posts_path, class: "button is-link"%>
+  <% if current_user.posts.include?(@post) %>
+    <%= link_to "Edit this post", edit_post_path(@post), class: "button is-warning" %>
+    <%= button_to "Destroy this post", @post, method: :delete, class: "button is-danger" %>
+  <% end %>
+</div>
 <%= render partial: 'post', locals: { show_view: true, post: @post } %>
 <div>
   <%= render partial: "poly_likes/form", locals: { post: @post } %>
-  <% if current_user.posts.include?(@post) %>
-    <%= link_to "Edit this post", edit_post_path(@post) %>
-    <%= button_to "Destroy this post", @post, method: :delete %>
-  <% end %>
   <p>
     <strong>Comments:</strong>
     <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>

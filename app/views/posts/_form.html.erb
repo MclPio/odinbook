@@ -1,7 +1,7 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, class: "") do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div class="notification is-danger">
+      <h2 class="title is-6"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
         <% post.errors.each do |error| %>
@@ -11,14 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+  <div class="field">
+    <div class="control">
+      <%= form.text_area :body, class: "textarea" %>
+    </div>
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div>
-    <%= form.submit %>
+  <div class="field">
+    <div class="control">
+      <%= form.submit class: "button is-primary is-rounded" %>
+    </div>
   </div>
 <% end %>
