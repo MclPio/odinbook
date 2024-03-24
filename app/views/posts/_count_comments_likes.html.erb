@@ -1,2 +1,12 @@
-<div class="level-item">Comments: <%= post.comments_count %></div>
-<div class="level-item">Likes: <%= post.poly_likes_count %></div>
+<div class="level-item">
+  <div class="icon-text">
+    <span class="material-symbols-outlined">comment</span>
+    <span><%= post.comments_count %></span>
+  </div>
+</div>
+<div class="level-item">
+  <div class="icon-text">
+    <span class="material-symbols-outlined">favorite</span>
+    <span><%= post.poly_likes_count %></span>
+  </div>
+</div>
