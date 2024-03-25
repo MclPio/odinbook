@@ -1,18 +1,28 @@
 <div id="Comment_<%= comment.id %>_like">
   <% like = current_user.poly_likes.find_by(likable: comment) %>
-  <% if like.nil? %>
-    <form action= <%= poly_likes_path %> method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="poly_like[likable_id]" value=<%= comment.id %>>
-      <input type="hidden" name="poly_like[likable_type]" value=<%= Comment %>>
-      <input type="submit" value="Like">
-    </form>
-  <% else %>
-    <form action= <%= poly_like_path(like)%> method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Unlike">
-    </form>
-  <% end %>
-  <%= pluralize(comment.poly_likes_count, 'like') if comment.poly_likes_count > 0 %>
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <% if like.nil? %>
+          <form action= <%= poly_likes_path %> method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="poly_like[likable_id]" value=<%= comment.id %>>
+            <input type="hidden" name="poly_like[likable_type]" value=<%= Comment %>>
+            <button type="submit" value="Like" class="level-item">
+              <span class="material-symbols-outlined heart-empty">favorite</span>
+            </button>
+          </form>
+        <% else %>
+          <form action= <%= poly_like_path(like)%> method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" value="Unlike" class="level-item">
+              <span class="material-symbols-outlined heart-full">favorite</span>
+            </button>
+          </form>
+        <% end %>
+      </div>
+      <div class="level-item"><%= comment.poly_likes_count %></div>
+    </div>
+  </div>
 </div>
