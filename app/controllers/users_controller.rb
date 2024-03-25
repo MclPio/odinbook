@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     if @user.update(user_pararms)
       redirect_to @user
     else
+      flash.now[:notice] = @user.errors.full_messages.to_sentence
       render :edit, status: :unprocessable_entity
     end
   end

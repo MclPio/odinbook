@@ -1,5 +1,4 @@
 <h1 class="title is-3">Edit Profile</h1>
-<%= render "users/shared/errors" %>
 <%= form_with model: @user do |form| %>
   <div class="field">
     <%= form.label :username, class: "label" %>
@@ -11,7 +10,7 @@
   <div class="field">
     <%= form.label :bio, class: "label" %>
     <div class="control">
-      <%= form.text_area :bio, class: "textarea" %>
+      <%= form.text_area :bio, class: "textarea has-fixed-size", rows: "2" %>
     </div>
   </div>
 
@@ -22,9 +21,12 @@
     </div>
   </div>
   <br />
-  <div class="field">
+  <div class="field is-grouped">
     <div class="control">
-      <%= form.button "Save", class: "button is-primary" %>
+      <%= form.button "Save", class: "button is-link" %>
+    </div>
+    <div class="control">
+      <%= link_to "Cancel", user_path(@user), class: "button is-link is-light", type: "button" %>
     </div>
   </div>
 <% end %>
