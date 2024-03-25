@@ -1,12 +1,9 @@
-<div class="level-item">
-  <div class="icon-text">
-    <span class="material-symbols-outlined">comment</span>
-    <span><%= post.comments_count %></span>
+<div class="level">
+  <div class="icon-text level-item">
+    <div class="level">
+      <span class="material-symbols-outlined">comment</span>
+      <span><%= post.comments_count %></span>
+    </div>
   </div>
-</div>
-<div class="level-item">
-  <div class="icon-text">
-    <span class="material-symbols-outlined">favorite</span>
-    <span><%= post.poly_likes_count %></span>
-  </div>
+  <div class="level-item"><%= render partial: 'poly_likes/form', locals: { post: post}%></div>
 </div>

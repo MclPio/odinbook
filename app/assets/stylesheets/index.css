@@ -63,11 +63,24 @@
   flex-direction: row;
   gap: 10px;
 }
+*/
 
-.material-symbols-outlined {
+.material-symbols-outlined.heart-empty {
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
-} */
+}
+
+.material-symbols-outlined.heart-full {
+  font-variation-settings:
+  'FILL' 100,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.material-symbols-outlined.heart-full {
+  color: red;
+}

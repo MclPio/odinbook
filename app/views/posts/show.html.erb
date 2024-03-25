@@ -7,7 +7,7 @@
 </div>
 <%= render partial: 'post', locals: { show_view: true, post: @post } %>
 <div>
-  <%= render partial: "poly_likes/form", locals: { post: @post } %>
+  <%# render partial: "poly_likes/form", locals: { post: @post } %>
   <p>
     <strong>Comments:</strong>
     <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
