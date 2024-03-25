@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  validates :bio, length: { maximum: 200 }
 
   has_many :follower_follows, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :follower_follows, source: :follower, dependent: :destroy
