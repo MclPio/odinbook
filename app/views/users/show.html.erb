@@ -1,5 +1,5 @@
 <% Rails.error.handle do %>
-  <%= image_tag("#{user.avatar_url}", alt: "profile picture", size: "75x75", class: 'profile-img') %>
+  <%= image_tag("#{@user.avatar_url}", alt: "profile picture", size: "75x75", class: 'profile-img') %>
 <% end %>
 <div class="profile-container">
   <div class="profile-info">

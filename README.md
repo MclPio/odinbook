@@ -14,5 +14,7 @@ Things I am looking forward to:
 * Add pagination for, comments, then pagination for follower and users search result
 * Populated comments and replies slow down page significantly
 * Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
+* Need to find a way to refactor comment partial so media objects detect siblings to draw line
+
 ## Featured Bugs
 * Weird turbo bug where a form is generated in a different way when replying for the second time

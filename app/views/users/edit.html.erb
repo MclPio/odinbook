@@ -1,14 +1,30 @@
-User#edit
+<h1 class="title is-3">Edit Profile</h1>
 <%= render "users/shared/errors" %>
 <%= form_with model: @user do |form| %>
-  <%= form.label :username %>
-  <%= form.text_field :username %>
+  <div class="field">
+    <%= form.label :username, class: "label" %>
+    <div class="control">
+      <%= form.text_field :username, class: "input" %>
+    </div>
+  </div>
 
-  <%= form.label :bio %>
-  <%= form.text_area :bio %>
+  <div class="field">
+    <%= form.label :bio, class: "label" %>
+    <div class="control">
+      <%= form.text_area :bio, class: "textarea" %>
+    </div>
+  </div>
 
-  <%= form.label :avatar_url %>
-  <%= form.text_field :avatar_url %> <%# validation needed, nil unacceptable...%>
-
-  <%= form.submit "Save" %>
+  <div class="field">
+    <%= form.label :avatar_url, class: "label" %>
+    <div class="control">
+      <%= form.text_field :avatar_url, class: "input" %>
+    </div>
+  </div>
+  <br />
+  <div class="field">
+    <div class="control">
+      <%= form.button "Save", class: "button is-primary" %>
+    </div>
+  </div>
 <% end %>
