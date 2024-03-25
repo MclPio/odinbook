@@ -1,25 +1,48 @@
 <div id="<%= dom_id comment %>">
-    <%= render partial: 'users/shared/profile_avatar', locals: {user: comment.user}%>
-    <%= comment.body %>
-    <% if current_user == comment.user %>
-      <%= link_to "Edit", edit_post_comment_path(comment.post ,comment) %>
-      <%= link_to "Delete", post_comment_path(comment.post, comment),
-          data: { turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"} %>
-    <% end %>
-    by <%= link_to comment.user.username, user_path(comment.user), data: {turbo: false} %>
-    <div data-controller="comment-form">
-      <%= render partial: "comments/likes", locals: { comment: comment } %>
-      <% if comment.depth == 0 %>
-        <div><%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %></div>
-      <% end %>
-      <div class="comment-form hide" data-comment-form-target="form" >
-        <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
+  <article class="media">
+    <figure class="media-left">
+      <%= render partial: 'users/shared/profile_avatar', locals: {user: comment.user}%>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <%= link_to comment.user.username, user_path(comment.user), data: {turbo: false} %>
+          <br/>
+          <%= comment.body %>
+        </p>
       </div>
+      <%# COMMENT FORM FOR REPLIES%>
+      <div data-controller="comment-form">
+        <div class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              <%= render partial: "comments/likes", locals: { comment: comment } %>
+            </div>
+            <% if comment.depth == 0 %>
+              <div class="level-item"><%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="comment-form hide" data-comment-form-target="form" >
+          <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
+        </div>
+      </div>
+      <%# COMMENT REPLIES %>
+      <% if comment.depth == 0 %>
+        <div id = "<%= dom_id comment %>_replies">
+          <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
+        </div>
+      <% end %>
     </div>
-  <% if comment.depth == 0 %>
-    <div id = "<%= dom_id comment %>_replies">
-      <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
+    <div class="media-right">
+      <% if current_user == comment.user %>
+        <%= link_to "Edit", edit_post_comment_path(comment.post ,comment) %>
+        <%= link_to "Delete", post_comment_path(comment.post, comment),
+              data: { turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"} %>
+      <% end %>
     </div>
-  <% end %>
+
+    
+  </article>
 </div>
