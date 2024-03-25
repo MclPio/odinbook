@@ -1,33 +1,25 @@
 <div id="<%= dom_id comment %>">
-<article>
-  <%= render partial: 'users/shared/profile_avatar', locals: {user: comment.user}%>
-  <div class="comment-username">
-    <p><%= comment.body %></p>
-    <div>
-      <% if current_user == comment.user %>
-        <%= link_to "Edit", edit_post_comment_path(comment.post ,comment) %>
-        <%= link_to "Delete", post_comment_path(comment.post, comment),
-            data: { turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"} %>
+    <%= render partial: 'users/shared/profile_avatar', locals: {user: comment.user}%>
+    <%= comment.body %>
+    <% if current_user == comment.user %>
+      <%= link_to "Edit", edit_post_comment_path(comment.post ,comment) %>
+      <%= link_to "Delete", post_comment_path(comment.post, comment),
+          data: { turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"} %>
+    <% end %>
+    by <%= link_to comment.user.username, user_path(comment.user), data: {turbo: false} %>
+    <div data-controller="comment-form">
+      <%= render partial: "comments/likes", locals: { comment: comment } %>
+      <% if comment.depth == 0 %>
+        <div><%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %></div>
       <% end %>
+      <div class="comment-form hide" data-comment-form-target="form" >
+        <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
+      </div>
     </div>
-  </div>
-  <small>by <%= comment.user.username %></small>
-</article>
-<div data-controller="comment-form">
-<div class="like-reply-bar">
-  <%= render partial: "comments/likes", locals: { comment: comment } %>
   <% if comment.depth == 0 %>
-    <div><%= link_to "Reply", "#", data: { action: "click->comment-form#toggleForm" } %></div>
+    <div id = "<%= dom_id comment %>_replies">
+      <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
+    </div>
   <% end %>
-</div>
-<hr/>
-  <div class="comment-form hide" data-comment-form-target="form" >
-    <%= render partial: "comments/form", locals: {post: comment.post, parent: comment } %>
-  </div>
-</div>
-<div id = "<%= dom_id comment %>_replies" class="sub-comment" >
-  <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
-</div>
-<div id="special_one"></div>
 </div>
