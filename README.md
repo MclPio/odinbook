@@ -17,7 +17,6 @@ Things I am looking forward to:
 * Need to find a way to refactor comment partial so media objects detect siblings to draw line
 * User search returns all users when its blank :/ just get a search gem?
 * Bug where posts are repeated if you have 1 followee. like is broken.
-* Add validation where a user can polylike a post or a comment 1 time only.
 
 ## EXTRA TODO
 * Add Posts Comments Likes Menu on user profile.
