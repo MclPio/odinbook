@@ -16,5 +16,8 @@ Things I am looking forward to:
 * Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
 * Need to find a way to refactor comment partial so media objects detect siblings to draw line
 
+## EXTRA TODO
+* Add Posts Comments Likes Menu on user profile.
+
 ## Featured Bugs
 * Weird turbo bug where a form is generated in a different way when replying for the second time

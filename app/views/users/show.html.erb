@@ -1,40 +1,58 @@
-<% Rails.error.handle do %>
-  <%= image_tag("#{@user.avatar_url}", alt: "profile picture", size: "75x75", class: 'profile-img') %>
-<% end %>
-<div class="profile-container">
-  <div class="profile-info">
-    <div class="username"><%= @user.username %></div>
-    <div class="bio"><%= @user.bio %></div>
-    <div class="join-date"><%= @user.created_at.strftime("%Y-%m-%d") %></div>
+<div class="columns">
+  <div class="column">
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <figure class="image is-128x128 mx-auto">
+            <% Rails.error.handle do %>
+              <%= image_tag("#{@user.avatar_url}", alt: "profile picture", size: "128x128", class: 'profile-img') %>
+            <% end %>
+          </figure>
+          <div class="title">
+            <h1><%= @user.username %></h1>
+          </div>
+          <div class="subtitle">
+            <p><%= @user.bio %></p>
+            <p>Member since: <%= @user.created_at.strftime("%Y-%m-%d") %></p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-  <% if current_user == @user %>
-    <div class="edit-profile"><%= link_to 'Edit', edit_user_path %></div>
-    <div><%= link_to 'Followers', follows_path %></div>
-  <% else %>
-    <%# am I folllowing them? %>
-    <% if @user.following?(current_user) %>
-      <p>following you<p>
-    <% end %>
-
-    <% if current_user.following?(@user) %>
-      <%# unfollow button %>
-      <% follow = Follow.find_by(follower_id: current_user.id, followee_id: @user.id) %>
-      <%= form_with scope: :follow, url: follow_path(follow), method: :delete  do |form| %>
-        <%= form.submit "Unfollow" %>
-      <% end %>
+  <div class="column is-narrow">
+    <% if current_user == @user %>
+      <div class="buttons">
+        <%= link_to 'Edit Profile', edit_user_path, class: "button is-primary" %>
+        <%= link_to 'Followers', follows_path, class: "button is-text" %>
+      </div>
     <% else %>
-      <%# follow button %>
-      <%= form_with scope: :follow, url: follows_path do |form| %>
-        <%= form.hidden_field :follower_id, value: current_user.id %>
-        <%= form.hidden_field :followee_id, value: @user.id %>
-        <%= form.submit "Follow" %>
-      <% end %>
+      <div class="buttons">
+        <%# am I folllowing them? %>
+        <% if current_user.following?(@user) %>
+          <%# unfollow button %>
+          <% follow = Follow.find_by(follower_id: current_user.id, followee_id: @user.id) %>
+          <%= form_with scope: :follow, url: follow_path(follow), method: :delete  do |form| %>
+            <%= form.submit "Unfollow", class: "button is-danger is-outlined" %>
+          <% end %>
+        <% else %>
+          <%# follow button %>
+          <%= form_with scope: :follow, url: follows_path do |form| %>
+            <%= form.hidden_field :follower_id, value: current_user.id %>
+            <%= form.hidden_field :followee_id, value: @user.id %>
+            <%= form.submit "Follow", class: "button is-primary" %>
+          <% end %>
+        <% end %>
+        <% if @user.following?(current_user) %>
+          <p>Following you</p>
+        <% end %>
+      </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
+
 
 <div id="posts">
   <% @user.posts.each do |post| %>
-      <%= render post %>
+    <%= render post %>
   <% end %>
 </div>
