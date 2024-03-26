@@ -5,7 +5,7 @@
         <div class="container has-text-centered">
           <figure class="image is-128x128 mx-auto">
             <% Rails.error.handle do %>
-              <%= image_tag("#{@user.avatar_url}", alt: "profile picture", size: "128x128", class: 'profile-img') %>
+              <%= image_tag("#{@user.avatar_url}", alt: "profile picture", size: "128x128", class: 'is-rounded') %>
             <% end %>
           </figure>
           <div class="title">

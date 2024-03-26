@@ -1,16 +1,28 @@
-<form action="/users" method="get">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type='text' name='search'>
-  <input type="submit" value="search">
+<form class="field is-grouped" action="/users" method="get">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="control">
+    <input class="input" type="text" name="search" placeholder="Search Users">
+  </div>
+  <div class="control">
+    <button class="button is-primary" type="submit">Search</button>
+  </div>
 </form>
-<% @users.each do |user| %>
-    <% if current_user == user %>
-      <% next %>
-    <% else %>
-      <div class="card">
-        <%= render partial: 'users/shared/profile_avatar', locals: {user: user}%>
-        <%= link_to user.username, user_path(user) %>
-      </div>
-    <% end %>
-<% end %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @users.each do |user| %>
+        <% if current_user != user %>
+          <div class="column is-one-third">
+            <div class="box">
+              <%= render partial: 'users/shared/profile_avatar', locals: {user: user}%>
+              <div class="content">
+                <p><%= link_to user.username, user_path(user) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
 <%== pagy_bulma_nav(@pagy) if @pagy.pages > 1 && (params[:search].nil?)%>
