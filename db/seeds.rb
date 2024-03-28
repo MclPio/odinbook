@@ -10,7 +10,8 @@
 user0 = User.create(email: "user0@world.co",
             password: "123456",
             full_name: "user0 lastname",
-            username: "user0")
+            username: "user0",
+            avatar_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihapA6TxGm_C6BnzI1KcgY-f6QzV-6-hWDQlLAWWsMoFu02Y6Ddyv7hBLgOOWLrh_GICUjXzA6cFn-9yngLQewfyM96IXQ=w1685-h1328')
 
 # NPC Users
 20.times do
