@@ -1,6 +1,6 @@
 <div class="column is-narrow">
   <div class="columns">
-    <div class="column">
+    <div class="column column is-half content">
       <h2 class="title is-5 has-text">Sign in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box" }) do |f| %>
         <div class="field">
@@ -28,7 +28,7 @@
   
         <div class="field">
           <div class="control">
-            <%= f.submit "Log in", class: "button is-primary is-fullwidth", data: { turbo: false } %>
+            <%= f.submit "Log in", class: "button is-primary mt-4", data: { turbo: false } %>
           </div>
         </div>
       <% end %>
