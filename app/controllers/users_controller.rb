@@ -4,14 +4,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
     begin
       @pagy, @users = pagy_countless(@users)
     rescue Pagy::OverflowError
       flash[:alert] = "Invalid page number."
       redirect_to users_path
     end
-    if params[:search]
+    if params[:search] && params[:search] != ""
       @users = User.where("username LIKE ?", User.sanitize_sql_like(params[:search]) + "%")
     end
   end
