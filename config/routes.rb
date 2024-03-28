@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :follows
 
   resources :poly_likes, only: [:create, :destroy]
+
+  get 'notifications', to: 'pages#notifcations'
 end
