@@ -36,11 +36,9 @@
         <span>Settings</span>
       </span>
     <% end %>
-    <div class="navbar-item">
-      <%= button_to destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }}, class: 'button is-small is-danger is-outlined is-rounded' do %>
-        <span class="material-symbols-outlined icon">logout</span>
-        <span>Sign out</span>
-      <% end %>
-    </div>
+    <%= button_to destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }}, class: 'navbar-item' do %>
+      <span class="material-symbols-outlined icon has-text-danger">logout</span>
+      <span class="has-text-danger">Sign out</span>
+    <% end %>
   <% end %>
 </div>
