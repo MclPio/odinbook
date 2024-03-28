@@ -16,7 +16,6 @@ Things I am looking forward to:
 * Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
 * Need to find a way to refactor comment partial so media objects detect siblings to draw line
 * User search returns all users when its blank :/ just get a search gem?
-* Bug where posts are repeated if you have 1 followee. like is broken.
 
 ## EXTRA TODO
 * Add Posts Comments Likes Menu on user profile.
