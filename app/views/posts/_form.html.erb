@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field mt-4">
     <div class="control">
       <%= form.text_area :body, class: "textarea" %>
     </div>
@@ -19,9 +19,13 @@
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div class="field">
+  <div class="field mt-4">
     <div class="control">
-      <%= form.submit class: "button is-primary is-rounded" %>
+      <div class="buttons">
+        <%= form.submit class: "button is-primary" %>
+        <%= link_to "Back to posts", posts_path, class: "button is-light" %>
+      </div>
     </div>
   </div>
+
 <% end %>
