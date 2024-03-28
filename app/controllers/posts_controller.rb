@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: %i[ edit update destroy ]
   # GET /posts or /posts.json
   def index
+    @post = Post.new
     approved_follows = current_user.followee_follows.where(approved: true)
     followee_ids = approved_follows.pluck(:followee_id)
     @posts = Post.includes(:user)

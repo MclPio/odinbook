@@ -1,6 +1,6 @@
 <%= form_with(model: post, class: "") do |form| %>
   <% if post.errors.any? %>
-    <div class="notification is-danger">
+    <div class="notification is-danger mt-4">
       <h2 class="title is-6"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -13,7 +13,7 @@
 
   <div class="field mt-4">
     <div class="control">
-      <%= form.text_area :body, class: "textarea" %>
+      <%= form.text_area :body, maxlength: "280", class: "textarea has-fixed-size", rows: "3", placeholder: "What is on your mind?" %>
     </div>
   </div>
 
@@ -22,10 +22,11 @@
   <div class="field mt-4">
     <div class="control">
       <div class="buttons">
-        <%= form.submit class: "button is-primary" %>
-        <%= link_to "Back to posts", posts_path, class: "button is-light" %>
+        <%= form.submit class: "button is-primary", data: {turbo: false} %>
+        <% if !params[:action].eql?('index') %>
+          <%= link_to "Back to posts", posts_path, class: "button is-light" %>
+        <% end %>
       </div>
     </div>
   </div>
-
 <% end %>

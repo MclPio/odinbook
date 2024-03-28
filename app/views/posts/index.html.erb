@@ -1,19 +1,6 @@
 <div class="container">
   <div class="column">
-    <form action="/posts" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="post[user_id]" value=<%=current_user.id%>>
-      <div class="field">
-        <div class="control">
-          <textarea maxlength="280" class="textarea has-fixed-size" name="post[body]" rows="3" cols="25" placeholder="What is on your mind?"></textarea>
-        </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <input type="submit" value="Post" data-turbo="false" class="button is-primary is-rounded">
-        </div>
-      </div>
-    </form>
+    <%= render partial: 'form', locals: { post: @post  } %>
   </div>
   <div class="column">
     <%= turbo_frame_tag :posts do %>
