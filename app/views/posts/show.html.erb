@@ -5,8 +5,8 @@
     <%= button_to "Destroy this post", @post, method: :delete, class: "button is-danger" %>
   <% end %>
 </div>
-<div class="section">
-  <div class="container"><%= render partial: 'post', locals: { show_view: true, post: @post } %></div>
+<div class="column is-four-fifths">
+  <%= render partial: 'post', locals: { show_view: true, post: @post } %>
 </div>
 <div>
   <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
