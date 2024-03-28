@@ -1,8 +1,16 @@
-<h1>Editing comment</h1>
+<h4 class="title is-4 mb-4">Editing comment</h4>
 
 <%= form_with url: post_comment_path(params[:post_id], @comment), method: "patch" do |form| %>
   <%= form.fields_for :comment do |f| %>
-    <%= f.text_area :body, value: @comment.body, rows: 6, cols: 48 %>
+    <div class="field">
+      <div class="control">
+        <%= f.text_area :body, value: @comment.body, rows: 3, class: "textarea has-fixed-size" %>
+      </div>
+    </div>
   <% end %>
-  <%= form.submit %>
+  <div class="field">
+    <div class="control">
+      <%= form.submit "Save", class: "button is-link mt-4" %>
+    </div>
+  </div>
 <% end %>

@@ -10,7 +10,7 @@
 </div>
 <div>
   <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
-  <h4 class="title is-4">Comments</h4>
+  <h4 class="title is-4 mb-4 mt-4">Comments</h4>
   <div id="comments">
     <%= render partial: @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc), locals: { post: @post }  %>
   </div>

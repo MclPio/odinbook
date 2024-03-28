@@ -5,12 +5,12 @@
       <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
       <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
     <% end %>
-    <div class="field">
+    <div class="field mt-4">
       <div class="control">
-        <textarea class="textarea" name="comment[body]" rows=6, cols=48></textarea class="textarea">
+        <textarea class="textarea has-fixed-size" name="comment[body]" rows=3, cols=48></textarea class="textarea">
         </div>
     </div>
-    <div class="comment-form-buttons">
+    <div class="comment-form-buttons mt-4 mb-4">
       <div class="field is-grouped">
         <div class="control">
           <input type="submit" value="Submit" class="button is-link">
@@ -30,10 +30,10 @@
     <% end %>
     <div class="field">
       <div class="control">
-        <textarea class="textarea" name="comment[body]" rows=6, cols=48></textarea class="textarea">
+        <textarea class="textarea has-fixed-size" name="comment[body]" rows=3, cols=48></textarea class="textarea">
         </div>
     </div>
-    <div class="field">
+    <div class="field mt-4">
       <div class="control">
         <input type="submit" value="Submit" class="button is-link">
       </div>

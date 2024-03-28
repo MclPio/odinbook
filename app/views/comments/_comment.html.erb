@@ -1,5 +1,4 @@
-<div id="<%= dom_id comment %>">
-  <article class="media">
+<div id="<%= dom_id comment %>" class="media">
     <figure class="media-left">
       <%= render partial: 'users/shared/profile_avatar', locals: {user: comment.user}%>
     </figure>
@@ -29,7 +28,7 @@
       </div>
       <%# COMMENT REPLIES %>
       <% if comment.depth == 0 %>
-        <div id = "<%= dom_id comment %>_replies">
+        <div id = "<%= dom_id comment %>_replies" class="mt-4">
           <%= render comment.comments.includes([:user, :post]).order(id: :desc) %>
         </div>
       <% end %>
@@ -44,5 +43,4 @@
     </div>
 
     
-  </article>
 </div>
