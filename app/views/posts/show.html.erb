@@ -1,18 +1,17 @@
-<div class="buttons">
-  <%= link_to "Back to posts", posts_path, class: "button is-link"%>
+<div class="buttons has-addons is-right">
+  <%= link_to "Back to posts", posts_path, class: "button is-link" %>
   <% if current_user.posts.include?(@post) %>
     <%= link_to "Edit this post", edit_post_path(@post), class: "button is-warning" %>
     <%= button_to "Destroy this post", @post, method: :delete, class: "button is-danger" %>
   <% end %>
 </div>
-<%= render partial: 'post', locals: { show_view: true, post: @post } %>
+<div class="section">
+  <div class="container"><%= render partial: 'post', locals: { show_view: true, post: @post } %></div>
+</div>
 <div>
-  <%# render partial: "poly_likes/form", locals: { post: @post } %>
-  <p>
-    <strong>Comments:</strong>
-    <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
-    <div id="comments">
-      <%= render partial: @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc), locals: { post: @post }  %>
-    </div>
-  </p>
+  <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
+  <h4 class="title is-4">Comments</h4>
+  <div id="comments">
+    <%= render partial: @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc), locals: { post: @post }  %>
+  </div>
 </div>
