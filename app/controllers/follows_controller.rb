@@ -10,7 +10,7 @@ class FollowsController < ApplicationController
       flash[:alert] = "Invalid page number."
       redirect_to follows_path
     end
-    if params[:search]
+    if params[:search] && params[:search] != ""
       @follows = current_user.followers
                              .where("username LIKE ?", User.sanitize_sql_like(params[:search]) + "%")
                              .map {|id| Follow.find_by(follower_id: id)}

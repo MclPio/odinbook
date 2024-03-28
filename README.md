@@ -15,6 +15,7 @@ Things I am looking forward to:
 * Populated comments and replies slow down page significantly
 * Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
 * Need to find a way to refactor comment partial so media objects detect siblings to draw line
+* Write model tests for follows for create/destroy. limit routes to necessary ones only. Important for user     authorization.
 
 ## EXTRA TODO
 * Add Posts Comments Likes Menu on user profile.

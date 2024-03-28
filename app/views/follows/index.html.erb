@@ -1,24 +1,41 @@
-<form action="/follows" method="get">
+<form class="field is-grouped" action="/follows" method="get">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type='text' name='search'>
-  <input type="submit" value="search">
+  <div class="control">
+    <input type='text' name='search' class="input" placeholder="Search Followers">
+  </div>
+  <div class="control">
+    <input class= "button is-primary" type="submit" value="Search">
+  </div>
 </form>
 
-<% @follows.each do |request| %>
-  <div class='card user-info'>
-    <div><%= render partial: 'users/shared/profile_avatar', locals: {user: User.find(request.follower_id)}%></div>
-    <div><% user =  User.find(request.follower_id)%></div>
-    <div><%= link_to user.username, user_path(user) %></div>
-    <%= form_with model: request, url: follow_path(request), method: :patch do |form| %>
-      <%= form.hidden_field :approved, value: !request.approved %>
-      <%= form.submit('Approve') if !request.approved %>
-    <% end %>
-    
-    <%= link_to "Remove", follow_path(request), data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-      }
-    %>
+<section class="section">
+  <h4 class="title is-4 mb-4">Followers</h4>
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @follows.each do |request| %>
+        <div class='column is-one-third'>
+          <div class="box">
+            <div><%= render partial: 'users/shared/profile_avatar', locals: {user: User.find(request.follower_id)}%></div>
+            <div class="content">
+              <div><% user =  User.find(request.follower_id)%></div>
+              <div><%= link_to user.username, user_path(user) %></div>
+                <%= form_with model: request, url: follow_path(request), method: :patch do |form| %>
+                  <%= form.hidden_field :approved, value: !request.approved %>
+                  <%= form.submit('Approve') if !request.approved %>
+                <% end %>
+              <div class="buttons has-addons is-right">
+                <%= link_to "Remove", follow_path(request), class: "button is-link",
+                  data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                  }
+                %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</section>
 <%== pagy_bulma_nav(@pagy) if @pagy.pages > 1 && (params[:search].nil?)%>
