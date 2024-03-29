@@ -17,8 +17,16 @@ class CommentsController < ApplicationController
         format.turbo_stream { flash.now[:notice] = "Comment was successfully created." }
       end
     else
-      redirect_to @comment.post, notice: @comment.errors.full_messages.to_sentence,
-                                 status: :unprocessable_entity
+      respond_to do |format|
+        format.html do
+          redirect_to @comment.post, notice: @comment.errors.full_messages.to_sentence,
+                                     status: :unprocessable_entity
+        end
+        format.turbo_stream do
+          flash.now[:notice] = @comment.errors.full_messages.to_sentence
+          render turbo_stream: turbo_stream.append(:flash, partial: "layouts/flash")
+        end
+      end
     end
   end
 
