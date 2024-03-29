@@ -2,7 +2,7 @@
   <%= link_to "Back to posts", posts_path, class: "button is-link" %>
   <% if current_user.posts.include?(@post) %>
     <%= link_to "Edit this post", edit_post_path(@post), class: "button is-warning" %>
-    <%= button_to "Destroy this post", @post, method: :delete, class: "button is-danger" %>
+    <%= button_to "Destroy this post", @post, method: :delete, class: "button is-danger", data: { turbo: false } %>
   <% end %>
 </div>
 <div class="column is-four-fifths">

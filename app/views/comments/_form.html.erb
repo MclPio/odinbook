@@ -1,46 +1,42 @@
 <% if parent %>
-  <div class="column is-four-fifths">
-    <form action="<%= post_comments_path(post) %>" method="post" id="form_<%= parent.id %>">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <% if !parent.nil? %>
-        <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
-        <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
-      <% end %>
-      <div class="field mt-4">
-        <div class="control">
-          <textarea class="textarea has-fixed-size" name="comment[body]" rows=3, cols=48></textarea class="textarea">
-          </div>
-      </div>
-      <div class="comment-form-buttons mt-4 mb-4">
-        <div class="field is-grouped">
-          <div class="control">
-            <input type="submit" value="Submit" class="button is-link">
-          </div>
-          <div class="control">
-            <%= button_to "Close", "#", data: { action: "click->comment-form#toggleForm" }, class: "button is-link is-light"%>
-          </div>
+  <form action="<%= post_comments_path(post) %>" method="post" id="form_<%= parent.id %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <% if !parent.nil? %>
+      <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
+      <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
+    <% end %>
+    <div class="field mt-4">
+      <div class="control">
+        <textarea class="textarea has-fixed-size" name="comment[body]" rows=3, cols=48></textarea class="textarea">
         </div>
-      </div>
-    </form>
-  </div>
-<% else %>
-  <div class="column is-four-fifths">
-    <form action="<%= post_comments_path(post) %>" method="post" id="form_<%= post.id %>">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <% if !parent.nil? %>
-        <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
-        <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
-      <% end %>
-      <div class="field">
-        <div class="control">
-          <textarea class="textarea has-fixed-size" name="comment[body]" rows=3, cols=48></textarea class="textarea">
-          </div>
-      </div>
-      <div class="field mt-4">
+    </div>
+    <div class="comment-form-buttons mt-4 mb-4">
+      <div class="field is-grouped">
         <div class="control">
           <input type="submit" value="Submit" class="button is-link">
         </div>
+        <div class="control">
+          <%= button_to "Close", "#", data: { action: "click->comment-form#toggleForm" }, class: "button is-link is-light"%>
+        </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+<% else %>
+  <form action="<%= post_comments_path(post) %>" method="post" id="form_<%= post.id %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <% if !parent.nil? %>
+      <input type="hidden" name="comment[parent_id]" value=<%= parent.id %>>
+      <input type="hidden" name="comment[depth]" value=<%= parent.depth + 1 %>>
+    <% end %>
+    <div class="field">
+      <div class="control">
+        <textarea class="textarea has-fixed-size" name="comment[body]" rows=3, cols=48></textarea class="textarea">
+        </div>
+    </div>
+    <div class="field mt-4">
+      <div class="control">
+        <input type="submit" value="Submit" class="button is-link">
+      </div>
+    </div>
+  </form>
 <% end %>
