@@ -12,19 +12,15 @@
   <%= render partial: "comments/form", locals: { post: @post, parent: nil } %>
   <h4 class="title is-4 mb-4 mt-4">Comments</h4>
   <div id="comments">
-    <%= render partial: @post_comments, locals: { post: @post }  %>
-  <div class="column">
-    <%= turbo_frame_tag :post_comments do %>
-      <%= render @post_comments %>
-    <% end %>
+      <%= turbo_frame_tag :post_comments do %>
+        <%= render @post_comments %>
+      <% end %>
 
-    <% if @pagy.next.present? %>
-      <%= turbo_frame_tag :pagination,
-          loading: :lazy,
-          src: post_path(@post, format: :turbo_stream, page: @pagy.next)
-          %>
-    <% end %>
-  </div>
-    <%= link_to "Show More", "#"%>
+      <% if @pagy.next.present? %>
+        <%= turbo_frame_tag :pagination,
+            loading: :lazy,
+            src: post_path(@post, format: :turbo_stream, page: @pagy.next)
+            %>
+      <% end %>
   </div>
 </div>
