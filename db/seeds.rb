@@ -69,3 +69,21 @@ Post.all.each do |post|
     user.comments.create!(body: "Hi I am from #{city}, I send my #{adjective} #{creature}, enjoy!", post_id: post.id)
   end
 end
+
+#Create a lot of comments for pagination testing
+last_post = Post.last
+50.times do |i|
+  last_post.comments.create(user_id: user0.id, body: "Parent comment #{i}")
+end
+
+#Create a lot of subcomments for pagination testing
+last_comment = last_post.comments.last
+
+50.times do |i|
+  last_post.comments.create(user_id: user0.id, body: "Child comment #{i}", parent_id: last_comment.id, depth: 1)
+end
+
+#Create a lot of likes for fun?
+last_post.comments.each do |comment|
+  comment.poly_likes.create(user_id: user0.id)
+end

@@ -24,6 +24,11 @@ class PostsController < ApplicationController
     @post_comments = @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc)
 
     @pagy, @post_comments = pagy_countless(@post_comments, items: 10)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /posts/new

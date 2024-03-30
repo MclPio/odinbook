@@ -11,12 +11,10 @@ Things I am looking forward to:
 
 ## TODO
 * Notifications for each new follow, comment, posts from followees
-* Add pagination for, comments
-* Populated comments and replies slow down page significantly
+* child commments also need pagination
 * Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
 * Write model tests for follows for create/destroy. limit routes to necessary ones only. Important for user     authorization.
-* stimulus components: character counter
-* Add dates to comments
+* stimulus components: character counter, Stimulus Timeago (better date format?), need a modal for the notifications as it is annoying and moves content.
 
 ## EXTRA TODO
 * Add Posts Comments Likes Menu on user profile.

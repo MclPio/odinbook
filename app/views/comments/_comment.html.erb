@@ -6,6 +6,9 @@
       <div class="content">
         <p>
           <%= link_to comment.user.username, user_path(comment.user), data: {turbo: false} %>
+          <small>
+            <time datetime="<%= comment.created_at.iso8601 %>"><%= comment.created_at.strftime("%b %d, %Y") %></time>
+          </small>
           <br/>
           <%= comment.body %>
         </p>
