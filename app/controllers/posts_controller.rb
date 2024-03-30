@@ -21,6 +21,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post_comments = @post.comments.where(parent_id: nil).includes([:user]).order(id: :desc)
+
+    @pagy, @post_comments = pagy_countless(@post_comments, items: 10)
   end
 
   # GET /posts/new
