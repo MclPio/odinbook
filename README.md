@@ -1,17 +1,26 @@
 # Odinbook
 
 [Project Link](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
+[Live Link](#)
 
-This is a Ruby on Rails project making a social media site clone applying knowledge learned. 
-Things I am looking forward to:
-* Testing the application
-* Trying out omni auth
-* Finding a unique spin that makes the project special
-* Getting the database design done
+## Requirements
+* Ruby 3.1.2
+* Rails 7.0.8
+* PostgreSQL 14.11
+* Yarn 1.22.19
+* Ubuntu 22.04
+
+## Setup
+1. ```bundle install```
+2. ```./bin/dev```
+3. login as user0
+  1. email: user0@world.co
+  2. password: 123456
+  OR
+4. login with google Oauth
 
 ## TODO
-* Notifications for each new follow, comment, posts from followees
-* Write model tests for follows for create/destroy. limit routes to necessary ones only. Important for user     authorization.
+* Notifications for each new follow, comment
 * stimulus components: character counter, Stimulus Timeago (better date format?), need a modal for the notifications as it is annoying and moves content.
 
 ## EXTRA TODO
