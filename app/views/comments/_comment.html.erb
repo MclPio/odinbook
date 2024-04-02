@@ -34,7 +34,7 @@
         <div id = "<%= dom_id comment %>_replies" class="mt-4">
           <%# render comment.comments.includes([:user, :post]).order(id: :desc).limit(1) %>
             <%= render comment.comments.includes([:user, :post]).order(id: :desc).limit(1) %>
-            <% if comment.comments.size > 1 %>
+            <% unless comment.comments.includes([:comments]).empty? %>
               <%= link_to "Show More", post_comments_path(parent_id: comment.id, post_id: comment.post_id), data: { turbo: false } %>
             <% end %>
         </div>
