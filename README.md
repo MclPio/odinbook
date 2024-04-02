@@ -1,6 +1,7 @@
 # Odinbook
 
 [Project Link](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
+
 [Live Link](#)
 
 ## Introduction
@@ -13,6 +14,7 @@ A user can make posts and comments; like posts or comments, and follow other use
 2. Turbo frames and streams for faster navigation
 3. Pagy gem for pagination and infinite scroll
 4. Devise and Google Oauth for authentication
+5. Figaro gem for environment variables, Faker gem for seeding, 
 
 
 ## Requirements
@@ -37,9 +39,4 @@ A user can make posts and comments; like posts or comments, and follow other use
 ## TODO
 * Notifications for each new follow, comment
 * stimulus components: character counter, Stimulus Timeago (better date format?), need a modal for the notifications as it is annoying and moves content.
-
-## EXTRA TODO
 * Add Posts Comments Likes Menu on user profile.
-
-## Featured Bugs
-* Weird turbo bug where a form is generated in a different way when replying for the second time
