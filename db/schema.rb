@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_26_153600) do
     t.string "encrypted_password", default: "", null: false
     t.string "full_name"
     t.string "uid"
-    t.string "avatar_url", default: "profile_avatar.svg", null: false
+    t.string "avatar_url", default: ""
     t.string "provider"
     t.string "username", default: "", null: false
     t.string "reset_password_token"
