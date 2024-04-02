@@ -52,11 +52,6 @@ class FollowsController < ApplicationController
     redirect_back fallback_location: root_path, status: :see_other
   end
 
-  def show
-  end
-  # toggle! method works great for the approved parameter
-  # todo:
-  # Change approved param to status, which can only have 3 values: accepted, pending, ignored
   private
 
   def follow_params
