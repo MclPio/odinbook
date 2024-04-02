@@ -24,8 +24,9 @@ A user can make posts and comments; like posts or comments, and follow other use
 
 ## Setup
 1. ```bundle install```
-2. ```./bin/dev```
+2. ```rails css:install:bulma```
 3. ```rails db:seed```
+4. ```./bin/dev```
 
 * login as user0
   1. email: user0@world.co
