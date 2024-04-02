@@ -11,7 +11,6 @@ Things I am looking forward to:
 
 ## TODO
 * Notifications for each new follow, comment, posts from followees
-* child commments also need pagination
 * Find a way to access set theme in bulma so that buttons change color from '' to 'is-dark'
 * Write model tests for follows for create/destroy. limit routes to necessary ones only. Important for user     authorization.
 * stimulus components: character counter, Stimulus Timeago (better date format?), need a modal for the notifications as it is annoying and moves content.

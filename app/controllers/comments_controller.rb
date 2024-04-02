@@ -3,6 +3,17 @@ class CommentsController < ApplicationController
   before_action :authorize_user!, only: %i[ edit update destroy ]
   before_action :set_comment, only: %i[ edit update destroy ]
 
+  def index
+    parent_comment = Comment.find(params[:parent_id])
+    @child_comments = parent_comment.comments.includes([:user, :post]).order(id: :desc)
+    @pagy, @child_comments = pagy_countless(@child_comments, items: 10)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
+
   def edit
     @comment = Comment.find(params[:id])
   end
@@ -58,7 +69,7 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:body, :parent_id, :depth).merge(post_id: params[:post_id])
+      params.require(:comment).permit(:body, :parent_id, :depth, :id).merge(post_id: params[:post_id])
     end
 
     def authorize_user!
