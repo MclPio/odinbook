@@ -3,6 +3,18 @@
 [Project Link](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
 [Live Link](#)
 
+## Introduction
+Social media app
+
+## Project Description
+A user can make posts and comments; like posts or comments, and follow other users
+
+1. Bulma 1.0 for styling
+2. Turbo frames and streams for faster navigation
+3. Pagy gem for pagination and infinite scroll
+4. Devise and Google Oauth for authentication
+
+
 ## Requirements
 * Ruby 3.1.2
 * Rails 7.0.8
@@ -13,10 +25,12 @@
 ## Setup
 1. ```bundle install```
 2. ```./bin/dev```
+3. ```rails db:seed```
+
 * login as user0
   1. email: user0@world.co
   2. password: 123456
-OR
+* OR
 * login with google Oauth
 
 ## TODO
