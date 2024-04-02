@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update]
 
-  resources :follows
+  resources :follows, except: [:show]
 
   resources :poly_likes, only: [:create, :destroy]
 
