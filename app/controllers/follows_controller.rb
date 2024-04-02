@@ -1,5 +1,7 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user!, only: [:destroy, :edit, :update]
+  before_action :authorize_user_create!, only: [:create]
 
   def index
     @follows = current_user.follower_follows
@@ -15,10 +17,6 @@ class FollowsController < ApplicationController
                              .where("username LIKE ?", User.sanitize_sql_like(params[:search]) + "%")
                              .map {|id| Follow.find_by(follower_id: id)}
     end
-  end
-
-  def new
-    @follow = Follow.new
   end
 
   def create
@@ -56,5 +54,27 @@ class FollowsController < ApplicationController
 
   def follow_params
     params.require(:follow).permit(:follower_id, :followee_id, :id, :approved)
+  end
+
+  def authorize_user!
+    follow = Follow.find_by(id: params[:id])
+
+    return unless follow
+
+    users_involved = [User.find_by(id: follow.follower_id), User.find_by(id: follow.followee_id)].compact
+
+    unless users_involved.include?(current_user)
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
+    end
+  end
+
+  def authorize_user_create!
+    follower = User.find_by(id: params[:follow][:follower_id])
+
+    unless current_user == follower
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
+    end
   end
 end
