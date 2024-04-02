@@ -13,11 +13,11 @@
 ## Setup
 1. ```bundle install```
 2. ```./bin/dev```
-3. login as user0
+* login as user0
   1. email: user0@world.co
   2. password: 123456
-  OR
-4. login with google Oauth
+OR
+* login with google Oauth
 
 ## TODO
 * Notifications for each new follow, comment
