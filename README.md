@@ -2,7 +2,7 @@
 
 [Project Link](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
 
-[Live Link](#)
+[Live Link](https://mclpio-odinbook.fly.dev)
 
 ## Introduction
 Social media app
@@ -10,12 +10,13 @@ Social media app
 ## Project Description
 A user can make posts and comments; like posts or comments, and follow other users
 
+Features:
 1. Bulma 1.0 for styling
 2. Turbo frames and streams for faster navigation
 3. Pagy gem for pagination and infinite scroll
-4. Devise and Google Oauth for authentication
-5. Figaro gem for environment variables, Faker gem for seeding, 
-
+4. Devise and Google OAuth for authentication
+5. Figaro gem for environment variables
+6. Faker gem for seeding
 
 ## Requirements
 * Ruby 3.1.2
@@ -28,9 +29,19 @@ A user can make posts and comments; like posts or comments, and follow other use
 1. ```bundle install```
 2. ```rails css:install:bulma```
 3. ```rails db:seed```
-4. ```./bin/dev```
+4. ```bundle exec figaro install```
+   Optional: configure your environment variables for Google OAuth2 and gmail
+   ```yaml
+   # config/application.yml
+   google_oauth_client_id:
+   google_oauth_client_secret:
+   gmail_username:
+   gmail_password:
+   ```
 
-* login as user0
+5. ```./bin/dev``` to start the application
+
+* login as user0 pre-populated with follows
   1. email: user0@world.co
   2. password: 123456
 * OR
