@@ -90,3 +90,4 @@ gem "bullet"
 gem 'cssbundling-rails'
 
 gem 'pagy'
+gem "dockerfile-rails", ">= 1.6", :group => :development

@@ -3,7 +3,8 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(user)
     @user = user
-    @url = 'http://example.com/login'
+    @url = 'https://mclpio-odinbook.fly.dev/'
+    @site_name = 'Odinbook'
     mail(to: user.email, subject: 'Welcome to Odinbook')
   end
 end

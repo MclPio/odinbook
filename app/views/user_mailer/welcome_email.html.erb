@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to example.com!</title>
+  <title>Welcome to <%= @site_name %>!</title>
   <style>
     body {
       font-family: sans-serif;
@@ -24,11 +24,11 @@
 </head>
 <body>
   <h1>Hi <%= @user.username %>,</h1>
-  <p>Welcome to example.com! </p>
+  <p>Welcome to <%= @site_name %>! </p>
   <p>You've successfully signed up and are now part of our growing community. We're thrilled to have you on board.</p>
   <p>To log in to the site, simply click the following link: <%= link_to 'Log In', @url %></p>
-  <p>We hope you enjoy using example.com! If you have any questions, don't hesitate to reach out to us.</p>
+  <p>We hope you enjoy using <%= @site_name %>! If you have any questions, don't hesitate to reach out to us.</p>
   <p>Thanks,</p>
-  <p>The example.com Team</p>
+  <p>The <%= @site_name %> Team</p>
 </body>
 </html>
