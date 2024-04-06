@@ -33,7 +33,7 @@ class PostsTest < ApplicationSystemTestCase
     visit post_url(@post)
     click_on "Edit this post", match: :first
 
-    fill_in "Body", with: @post.body
+    fill_in "post[body]", with: @post.body
     click_on "Update Post"
 
     assert_text "Post was successfully updated"

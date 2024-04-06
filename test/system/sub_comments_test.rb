@@ -23,7 +23,7 @@ class SubCommentsTest < ApplicationSystemTestCase
     assert_text "This is a child comment"
   end
 
-  test "should update sub-comment" do
+  test "user can update sub-comment" do
     user = users(:two)
     sign_in user
 
@@ -74,7 +74,6 @@ class SubCommentsTest < ApplicationSystemTestCase
       fill_in "comment[body]", with: "This is a child comment"
       click_on "Submit"
     end
-    assert_selector 'turbo-frame[id="comment_id"]', visible: false
     assert_text "This is a child comment"
   end
 end

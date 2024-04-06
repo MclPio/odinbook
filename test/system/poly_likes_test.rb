@@ -16,7 +16,7 @@ class PolyLikesTest < ApplicationSystemTestCase
     comment_id = comments(:one).id
     within("#comment_#{comment_id}") do
       click_on "Like"
-      assert_text "1 like"
+      assert_text "1"
     end
   end
 

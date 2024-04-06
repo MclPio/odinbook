@@ -11,7 +11,7 @@ class UsersTest < ApplicationSystemTestCase
   test "visiting sign in page" do
     visit new_user_session_url
     #take_screenshot #very cool feature!
-    assert_selector "h2", text: "Log in"
+    assert_selector "h2", text: "Sign in"
   end
 
   # test "logging in via devise" do
@@ -42,7 +42,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test "Sign in" do
     visit new_user_session_url
-    assert_text "Log in"
+    assert_text "Sign in"
     fill_in "Email", with: "normal@world.co"
     fill_in "Password", with: "password"
     click_on "Log in"

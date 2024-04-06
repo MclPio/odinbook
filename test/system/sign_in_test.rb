@@ -31,7 +31,7 @@ class SignInTest < ApplicationSystemTestCase
     })
 
     visit new_user_session_path
-    find('input[src="/assets/web_light_rd_SI@1x.png"]').click
+    click_button 'Continue with Google'
     assert_selector 'button', text: "Sign out"
   end
 
@@ -40,7 +40,7 @@ class SignInTest < ApplicationSystemTestCase
     OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
 
     visit new_user_session_path
-    find('input[value="Login"]').click
+    click_button 'Continue with Google'
     take_screenshot
     assert_text 'Could not authenticate you from GoogleOauth2 because "Invalid credentials".'
   end

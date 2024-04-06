@@ -36,7 +36,7 @@ class SignUpTest < ApplicationSystemTestCase
     })
 
     visit root_path
-    find('input[value="Login"]').click
+    click_on 'Continue with Google'
     assert_selector 'button', text: "Sign out"
   end
 
