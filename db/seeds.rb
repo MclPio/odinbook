@@ -54,7 +54,7 @@ end
 # NPC Users create posts
 4.times do
   User.all.each do |user|
-    quote = Faker::JapaneseMedia::OnePiece.quote
+    quote = Faker::TvShows::Spongebob.quote
     Post.create(body: quote, user_id: user.id)
   end
 end

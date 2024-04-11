@@ -1,0 +1,54 @@
+#flash {
+  min-height: 0px;
+  max-height: 0px;
+  z-index: 200;
+}
+
+.animate-flash {
+  animation-name: slidedown;
+  animation-duration: 4s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-200px);
+  }
+
+  10% {
+    transform: translateY(15px);
+  }
+  
+  12% {
+    transform: translateY(5px);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+.hide-flash {
+  animation-name: hideit;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
