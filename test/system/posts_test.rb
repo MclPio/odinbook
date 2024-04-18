@@ -37,7 +37,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Post" do

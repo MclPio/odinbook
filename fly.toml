@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for mclpio-odinbook on 2024-04-04T12:34:45-04:00
+# fly.toml app configuration file generated for mclpio-odinbook on 2024-04-10T23:51:21-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -10,7 +10,7 @@ console_command = '/rails/bin/rails console'
 [build]
 
 [deploy]
-  release_command = "./bin/rails db:prepare"
+  release_command = './bin/rails db:prepare'
 
 [http_service]
   internal_port = 3000
@@ -22,8 +22,10 @@ console_command = '/rails/bin/rails console'
 
 [[vm]]
   size = 'shared-cpu-1x'
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
 
 [[statics]]
   guest_path = '/rails/public'
   url_prefix = '/'
-swap_size_mb = 1024
