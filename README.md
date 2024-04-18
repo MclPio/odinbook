@@ -4,6 +4,8 @@
 
 [Live Link](https://mclpio-odinbook.fly.dev)
 
+[Blog Post](https://www.michaelpious.com/posts/progress-update/)
+
 ## Introduction
 Social media app
 
