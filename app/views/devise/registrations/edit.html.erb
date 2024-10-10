@@ -59,6 +59,15 @@
         <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "button is-danger mt-4" %>
       </div>
     </div>
+
+    <div class="mt-4">
+      <div class="container">
+        <h4 class="title is-5 mb-2">Color Theme</h4>
+        <div class="buttons has-addons" data-controller="theme">
+          <button class="button" data-action="click->theme#light" data-theme-target="light">Light</button>
+          <button class="button" data-action="click->theme#dark" data-theme-target="dark">Dark</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
