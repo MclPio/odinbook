@@ -1,3 +1,8 @@
+# 👋 For Recruiters
+Login into demo account via:
+- username: user0@world.co
+- password: 123456
+
 # Odinbook
 
 [Project Link](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
