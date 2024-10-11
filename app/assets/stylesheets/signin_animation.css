@@ -1,75 +1,70 @@
+.signin-background,
+.signin-background-2,
+.signin-background-3 {
+  position: fixed;
+  width: 80vw;
+  height: 80vw;
+  z-index: -1;
+  filter: blur(8rem);
+}
+
 .signin-background {
   background-color: #00d1b2;
-  width: 50vh;
-  height: 50vh;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-  filter: blur(5rem);
-  animation: pulse-and-move-1 10s infinite ease-in-out;
+  left: calc(50% - 40vw);
+  bottom: -20vw;
+  animation: pulse-and-move-1 12s infinite ease-in-out;
 }
 
 .signin-background-2 {
   background-color: #209cee;
-  width: 50vh;
-  height: 50vh;
-  position: fixed;
-  right: 20rem;
-  bottom: 0;
-  z-index: -1;
-  filter: blur(5rem);
-  animation: pulse-and-move-2 10s infinite ease-in-out;
+  left: calc(50% - 70vw);
+  bottom: -30vw;
+  animation: pulse-and-move-2 12s infinite ease-in-out;
 }
 
 .signin-background-3 {
   background-color: #3273dc;
-  width: 50vh;
-  height: 50vh;
-  position: fixed;
-  right: 0;
-  top: 12rem;
-  z-index: -1;
-  filter: blur(5rem);
-  animation: pulse-and-move-3 10s infinite ease-in-out;
+  left: calc(50% - 10vw);
+  top: -30vw;
+  animation: pulse-and-move-3 12s infinite ease-in-out;
 }
 
 @keyframes pulse-and-move-1 {
   0%, 100% {
     transform: scale(1) translate(0, 0);
-    opacity: 0.25;
+    opacity: 0.2;
   }
   50% {
-    transform: scale(1.05) translate(1rem, -1rem);
-    opacity: 0.4;
+    transform: scale(1.1) translate(5vw, -5vw);
+    opacity: 0.3;
   }
 }
 
 @keyframes pulse-and-move-2 {
   0%, 100% {
     transform: scale(1) translate(0, 0);
-    opacity: 0.25;
+    opacity: 0.2;
   }
   50% {
-    transform: scale(1.05) translate(-1rem, 1rem);
-    opacity: 0.4;
+    transform: scale(1.1) translate(-5vw, 5vw);
+    opacity: 0.3;
   }
 }
 
 @keyframes pulse-and-move-3 {
   0%, 100% {
     transform: scale(1) translate(0, 0);
-    opacity: 0.25;
+    opacity: 0.2;
   }
   50% {
-    transform: scale(1.05) translate(1rem, -1rem);
-    opacity: 0.4;
+    transform: scale(1.1) translate(5vw, -5vw);
+    opacity: 0.3;
   }
 }
 
 .navbar {
   &.is-transparent {
-  background-color: transparent;
-  background-image: none;
+    background-color: transparent;
+    background-image: none;
   }
 }
